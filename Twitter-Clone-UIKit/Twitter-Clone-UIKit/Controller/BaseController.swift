@@ -1,62 +1,70 @@
-   //
-   //  BaseController.swift
-   //  Twitter-Clone-UIKit
-   //
-   //  Created by mehmet karanlık on 4.05.2022.
-   //
+//
+//  BaseController.swift
+//  Twitter-Clone-UIKit
+//  Created by mehmet karanlık on 4.05.2022.
+//
 
 import UIKit
 
 class BaseController: UITabBarController {
-      // MARK:  properties
+   // MARK: properties
 
-   let feed =  FeedController()
-   let explore =  ExploreController()
-   let notification =  NotificationController()
-   let conversations =  ConversationsController()
+   let feed = FeedController()
+   let explore = ExploreController()
+   let notification = NotificationController()
+   let conversations = ConversationsController()
 
    let actionButton: UIButton = {
       let button = UIButton(type: .system)
-      button.backgroundColor = .systemBlue
+      button.backgroundColor = .twitterBlue
       button.tintColor = .white
       button.setImage(UIImage(named: "new_tweet"), for: .normal)
       button.layer.cornerRadius = 25
+      button.addTarget(self, action: #selector(actionButtonTapped), for:.touchUpInside)
       return button
    }()
 
 
 
-      // MARK:  lifecycle
+
+   // MARK:  selectors
+
+   @objc private func actionButtonTapped() {
+
+   }
+
+   // MARK: lifecycle
 
    override func viewDidLoad() {
       super.viewDidLoad()
       configureViewContoller()
+      configureUI()
+   }
 
+   // MARK: helpers
 
+   private func configureViewContoller() {
+      tabBar.backgroundColor = .systemGray6.withAlphaComponent(0.45)
+      tabBar.isOpaque = false
+      tabBar.unselectedItemTintColor = .gray.withAlphaComponent(0.7)
+      tabBar.barStyle = .black
+
+      viewControllers = populateTabController(
+         images: ["home_unselected",
+                  "search_unselected",
+                  "like_unselected",
+                  "ic_mail_outline_white_2x-1"],
+         views: [feed, explore, notification, conversations])
 
    }
 
 
-      // MARK:  helpers
-
-   func configureViewContoller() {
-      self.tabBar.backgroundColor = .systemGray6.withAlphaComponent(0.45)
-      self.tabBar.isOpaque = false
-      self.tabBar.unselectedItemTintColor = .gray.withAlphaComponent(0.7)
-      self.tabBar.barStyle = .black
-
-      viewControllers = populateTabController(
-         images: ["home_unselected"
-                  ,"search_unselected",
-                  "like_unselected",
-                  "ic_mail_outline_white_2x-1"],
-         views: [feed,explore,notification,conversations])
-
+  private  func configureUI() {
       configureActionButton()
 
    }
 
-   func configureActionButton() {
+  private func configureActionButton() {
       view.addSubview(actionButton)
       actionButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor,
                           right: view.safeAreaLayoutGuide.rightAnchor,
@@ -64,7 +72,7 @@ class BaseController: UITabBarController {
                           width: 50, height: 50)
    }
 
-   func populateTabController(images : [String],views : [UIViewController]) -> [UINavigationController] {
+   private func populateTabController(images: [String], views: [UIViewController]) -> [UINavigationController] {
       var navigationControllers = [UINavigationController]()
       views.forEach { view in
          let navigationView = UINavigationController(rootViewController: view)
@@ -76,6 +84,4 @@ class BaseController: UITabBarController {
       }
       return navigationControllers
    }
-
-
 }

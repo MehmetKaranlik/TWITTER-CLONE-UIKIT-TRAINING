@@ -8,25 +8,21 @@
 import UIKit
 
 class ConversationsController: UIViewController {
-      // MARK:  properties
+   // MARK: properties
 
-
-
-      // MARK:  lifecycle
+   // MARK: lifecycle
 
    override func viewDidLoad() {
       super.viewDidLoad()
       configureUI()
 
-         // Do any additional setup after loading the view.
+      // Do any additional setup after loading the view.
    }
 
+   // MARK: helpers
 
-      // MARK:  helpers
-
-   func configureUI() {
+   private func configureUI() {
       view.backgroundColor = .white
       navigationItem.title = "Messages"
    }
-
 }
