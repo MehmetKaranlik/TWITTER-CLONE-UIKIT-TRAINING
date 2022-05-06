@@ -78,7 +78,6 @@ class BaseController: UITabBarController {
          let navigationView = UINavigationController(rootViewController: view)
          navigationView.navigationBar.backgroundColor = .white
          navigationView.navigationBar.setValue(false, forKey: "hidesShadow")
-
          navigationControllers.append(navigationView)
          view.tabBarItem.image = UIImage(named: images[views.firstIndex(of: view)!])
       }

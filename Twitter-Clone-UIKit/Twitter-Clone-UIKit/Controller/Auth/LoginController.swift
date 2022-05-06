@@ -69,7 +69,9 @@ class LoginController: UIViewController {
    // MARK: selectors
 
    @objc func loginButtonTapped() {}
-   @objc func navigateButtonTapped() {}
+   @objc func navigateButtonTapped() {
+      navigationController?.pushViewController(RegisterController(), animated: true)
+   }
    override func viewDidLoad() {
       super.viewDidLoad()
       configureUI()
