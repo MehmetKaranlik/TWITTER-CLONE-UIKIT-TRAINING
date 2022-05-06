@@ -65,7 +65,7 @@ struct RegisterService: RegisterServiceProtocol {
          }
          //fetch image url from bucket
          PROFILE_IMAGE_REF.child(uid).downloadURL { url, error in
-            if let error = error {
+            if let _ = error {
                return
             }
             guard let imagePath = url else { return }
