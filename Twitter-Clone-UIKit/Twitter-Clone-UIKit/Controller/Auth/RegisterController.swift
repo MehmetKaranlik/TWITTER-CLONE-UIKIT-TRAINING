@@ -1,15 +1,14 @@
-   //
-   //  RegisterController.swift
-   //  Twitter-Clone-UIKit
-   //
-   //  Created by mehmet karanlık on 5.05.2022.
-   //
+//
+//  RegisterController.swift
+//  Twitter-Clone-UIKit
+//
+//  Created by mehmet karanlık on 5.05.2022.
+//
 
 import UIKit
 
 class RegisterController: UIViewController {
-      // MARK: properties
-
+   // MARK: properties
 
    let viewModel = RegisterViewModel()
 
@@ -53,7 +52,7 @@ class RegisterController: UIViewController {
       return tf
    }()
 
-   private let registerButton : UIButton = {
+   private let registerButton: UIButton = {
       let button = UIButton(type: .system)
       button.setTitle("Register", for: .normal)
       button.tintColor = .twitterBlue
@@ -91,24 +90,38 @@ class RegisterController: UIViewController {
       return button
    }()
 
-   private lazy var  stack: UIStackView =  {
-      return UIStackView(arrangedSubviews: [emailTFContainer, passwordTFContainer,
-                                            fullnameTFContainer, usernameTFContainer])
+   private let activityIndicator: UIActivityIndicatorView = {
+      let view = UIActivityIndicatorView()
+      view.hidesWhenStopped = true
+      view.color = .white
+
+      return view
    }()
 
-      // MARK: lifecycle
+   private lazy var stack: UIStackView = {
+      UIStackView(arrangedSubviews: [emailTFContainer, passwordTFContainer,
+                                     fullnameTFContainer, usernameTFContainer])
+   }()
 
-      // MARK: selectors
+   // MARK: lifecycle
+
+   // MARK: selectors
 
    @objc func handlePickerTapped() {
       present(imagePickerController, animated: true)
    }
 
    @objc func handleRegister() {
-      viewModel.registerButtonCallBack(email: emailTF.text, password: passwordTF.text,
-                                       fullname: fullnameTF.text, userName: usernameTF.text)
+      viewModel.registerButtonCallBack(email: emailTF.text,
+                                       password: passwordTF.text,
+                                       fullname: fullnameTF.text,
+                                       userName: usernameTF.text) { [weak self] in
+         self?.activityIndicator.startAnimating()
 
-
+      } onServiceEnded: { [weak self] in
+         self?.activityIndicator.stopAnimating()
+         self?.dismiss(animated: true)
+      }
    }
 
    @objc func navigateButtonTapped() {
@@ -118,27 +131,32 @@ class RegisterController: UIViewController {
    override func viewDidLoad() {
       super.viewDidLoad()
       configureUI()
-
    }
 
-      // MARK: helpers
-
-
+   // MARK: helpers
 
    private func configureUI() {
       view.backgroundColor = .twitterBlue
       navigationItem.hidesBackButton = true
       imagePickerController.delegate = self
       imagePickerController.allowsEditing = true
+      configureActivityIndicator()
       configureImagePickerView()
       configureTFStack()
       configureRegisterButton()
       configureNavigateButton()
    }
 
+   fileprivate func configureActivityIndicator() {
+      view.addSubview(activityIndicator)
+      activityIndicator.centerX(inView: view)
+      activityIndicator.centerY(inView: view)
+   }
+
    fileprivate func configureImagePickerView() {
       view.addSubview(imagePickerViewButton)
-      imagePickerViewButton.anchor(top: view.topAnchor, paddingTop: 70, width: 120, height: 120)
+      imagePickerViewButton.anchor(top: view.topAnchor, paddingTop: 70,
+                                   width: 120, height: 120)
       imagePickerViewButton.centerX(inView: view)
    }
 
@@ -153,7 +171,7 @@ class RegisterController: UIViewController {
 
    fileprivate func configureRegisterButton() {
       view.addSubview(registerButton)
-      registerButton.anchor(top: stack.bottomAnchor,  right: view.rightAnchor,
+      registerButton.anchor(top: stack.bottomAnchor, right: view.rightAnchor,
                             left: view.leftAnchor, paddingTop: 30,
                             paddingRight: 40, paddingLeft: 40, height: 40)
    }
@@ -166,10 +184,10 @@ class RegisterController: UIViewController {
    }
 }
 
-
-extension RegisterController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension RegisterController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
    func imagePickerController(_ picker: UIImagePickerController,
-                              didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+                              didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any])
+   {
       guard let profileImage = info[.editedImage] as? UIImage else { return }
       imagePickerViewButton.layer.cornerRadius = 60
       imagePickerViewButton.layer.masksToBounds = true
@@ -178,7 +196,7 @@ extension RegisterController : UIImagePickerControllerDelegate, UINavigationCont
       imagePickerViewButton.layer.borderColor = UIColor.white.cgColor
       imagePickerViewButton.layer.borderWidth = 3
       viewModel.profileImage = profileImage
-      self.imagePickerViewButton.setImage(profileImage.withRenderingMode(.alwaysOriginal), for: .normal)
+      imagePickerViewButton.setImage(profileImage.withRenderingMode(.alwaysOriginal), for: .normal)
       dismiss(animated: true)
    }
 }

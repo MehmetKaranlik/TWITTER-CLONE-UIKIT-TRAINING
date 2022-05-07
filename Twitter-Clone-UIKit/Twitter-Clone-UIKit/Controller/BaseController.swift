@@ -4,10 +4,13 @@
 //  Created by mehmet karanlık on 4.05.2022.
 //
 
+import FirebaseAuth
 import UIKit
 
 class BaseController: UITabBarController {
    // MARK: properties
+
+   let viewModel = BaseViewModel()
 
    let feed = FeedController()
    let explore = ExploreController()
@@ -20,18 +23,13 @@ class BaseController: UITabBarController {
       button.tintColor = .white
       button.setImage(UIImage(named: "new_tweet"), for: .normal)
       button.layer.cornerRadius = 25
-      button.addTarget(self, action: #selector(actionButtonTapped), for:.touchUpInside)
+      button.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
       return button
    }()
 
+   // MARK: selectors
 
-
-
-   // MARK:  selectors
-
-   @objc private func actionButtonTapped() {
-
-   }
+   @objc private func actionButtonTapped() {}
 
    // MARK: lifecycle
 
@@ -44,10 +42,9 @@ class BaseController: UITabBarController {
    // MARK: helpers
 
    private func configureViewContoller() {
-      tabBar.backgroundColor = .systemGray6.withAlphaComponent(0.45)
-      tabBar.isOpaque = false
-      tabBar.unselectedItemTintColor = .gray.withAlphaComponent(0.7)
-      tabBar.barStyle = .black
+      viewModel.checkIfuserLoggedIn(viewController: self)
+
+      configureTabBar()
 
       viewControllers = populateTabController(
          images: ["home_unselected",
@@ -55,16 +52,20 @@ class BaseController: UITabBarController {
                   "like_unselected",
                   "ic_mail_outline_white_2x-1"],
          views: [feed, explore, notification, conversations])
-
    }
 
+   fileprivate func configureTabBar() {
+      tabBar.backgroundColor = .systemGray6.withAlphaComponent(0.45)
+      tabBar.isOpaque = false
+      tabBar.unselectedItemTintColor = .gray.withAlphaComponent(0.7)
+      tabBar.barStyle = .black
+   }
 
-  private  func configureUI() {
+   private func configureUI() {
       configureActionButton()
-
    }
 
-  private func configureActionButton() {
+   private func configureActionButton() {
       view.addSubview(actionButton)
       actionButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor,
                           right: view.safeAreaLayoutGuide.rightAnchor,

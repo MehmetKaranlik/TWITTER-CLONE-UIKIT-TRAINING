@@ -21,12 +21,18 @@ class RegisterViewModel : ObservableObject {
       // MARK:  functions
 
    func registerButtonCallBack(email: String?, password:String?,
-                               fullname: String?, userName: String?) {
+                               fullname: String?, userName: String?,
+                               onServiceCallStart : @escaping ()-> Void,
+                               onServiceEnded: @escaping ()-> Void
+   ) {
       let validate = validateUserInput(email: email, password: password,
                                          fullname: fullname, userName: userName)
       if validate {
+         onServiceCallStart()
          service.registerUser(email: email!, password: password!,
-                              fullname: fullname!, username: userName!, userImage: profileImage)
+                              fullname: fullname!, username: userName!, userImage: profileImage) {
+            onServiceEnded()
+         }
       }
    }
 

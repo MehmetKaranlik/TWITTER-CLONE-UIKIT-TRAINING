@@ -19,8 +19,10 @@ protocol RegisterServiceProtocol {
 
 
    func registerUser(email : String, password : String,
-                     fullname: String, username: String, userImage: UIImage?)
+                     fullname: String, username: String,
+                     userImage: UIImage?, onServiceComplete: @escaping () -> Void)
 
 
-   func uploadUserImage(uid : String,userImage: UIImage, urlPath:  @escaping (String)-> Void)
+    func uploadUserImage(uid : String,userImage: UIImage, urlPath:  @escaping (String)-> Void)
+   func downloadUrl(uid: String,passUrl: @escaping (String?)-> Void)
 }

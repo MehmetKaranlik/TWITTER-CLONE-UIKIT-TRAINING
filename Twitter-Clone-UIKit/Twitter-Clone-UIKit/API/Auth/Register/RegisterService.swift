@@ -1,7 +1,6 @@
 //
 //  RegisterService.swift
 //  Twitter-Clone-UIKit
-//
 //  Created by mehmet karanlık on 6.05.2022.
 //
 
@@ -11,12 +10,15 @@ import Foundation
 import UIKit
 
 struct RegisterService: RegisterServiceProtocol {
+
+
    var storage: Storage = .storage()
    var database: Database = .database()
    var auth: Auth = .auth()
 
    func registerUser(email: String, password: String,
-                     fullname: String, username: String, userImage: UIImage?)
+                     fullname: String, username: String,
+                     userImage: UIImage?, onServiceComplete: @escaping () -> Void)
    {
       // create user
       auth.createUser(withEmail: email, password: password) { result, error in
@@ -40,6 +42,7 @@ struct RegisterService: RegisterServiceProtocol {
                      print("user didnt got created : \(error.localizedDescription)")
                      return
                   }
+                  onServiceComplete()
                }
             }
          }
@@ -47,31 +50,38 @@ struct RegisterService: RegisterServiceProtocol {
          else {
             values["profileImagePath"] = Utilities().profileImagePlaceHolderUrl
             USERS_DB_REF.child(uid).updateChildValues(values) { error, _ in
-                  if let error = error {
-                     print("user didnt got created : \(error.localizedDescription)")
-                     return
-                  }
+               if let error = error {
+                  print("user didnt got created : \(error.localizedDescription)")
+                  return
                }
+               onServiceComplete()
+            }
          }
       }
    }
 
-   func uploadUserImage(uid: String, userImage: UIImage, urlPath: @escaping (String) -> Void) {
+   internal func uploadUserImage(uid: String, userImage: UIImage, urlPath: @escaping (String) -> Void) {
       guard let imageData = userImage.jpegData(compressionQuality: 0.2) else { return }
-      PROFILE_IMAGE_REF.child(uid).putData(imageData) { metadata, error in
+      PROFILE_IMAGE_REF.child(uid).putData(imageData) { _, error in
          if let error = error {
             print("something went wrong with uploading image : \(error.localizedDescription)")
             return
          }
-         //fetch image url from bucket
-         PROFILE_IMAGE_REF.child(uid).downloadURL { url, error in
-            if let _ = error {
-               return
-            }
+         // fetch image url from bucket
+         downloadUrl(uid: uid) { url in
             guard let imagePath = url else { return }
-            urlPath(imagePath.absoluteString)
+            urlPath(imagePath)
          }
+      }
+   }
 
+
+   internal func downloadUrl(uid: String,passUrl: @escaping (String?)-> Void) {
+      PROFILE_IMAGE_REF.child(uid).downloadURL { url, error in
+         if let _ = error {
+            return
+         }
+         passUrl(url?.absoluteString)
       }
    }
 }

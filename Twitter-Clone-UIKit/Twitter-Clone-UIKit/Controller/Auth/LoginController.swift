@@ -10,6 +10,9 @@ import UIKit
 class LoginController: UIViewController {
    // MARK: properties
 
+
+    let viewModel = LoginViewModel()
+
    private let appLogo: UIImageView = {
       let imageView = UIImageView(image: UIImage(named: "TwitterLogo"))
       imageView.contentMode = .scaleAspectFit
@@ -64,11 +67,26 @@ class LoginController: UIViewController {
       return button
    }()
 
+   private let activityIndicator : UIActivityIndicatorView =  {
+      let ai = UIActivityIndicatorView()
+      ai.color = .white
+      return ai
+   }()
+
    // MARK: lifecycle
 
    // MARK: selectors
 
-   @objc func loginButtonTapped() {}
+   @objc func loginButtonTapped() {
+      activityIndicator.startAnimating()
+      viewModel.loginUser(email: emailTF.text, password: passwordTF.text,
+                          navigationController: self.navigationController!) { [weak self] in
+         // on fail
+         self?.activityIndicator.stopAnimating()
+         self?.passwordTF.text  = nil
+
+      }
+   }
    @objc func navigateButtonTapped() {
       navigationController?.pushViewController(RegisterController(), animated: true)
    }
@@ -79,13 +97,23 @@ class LoginController: UIViewController {
 
    // MARK: helper
 
+
+
    private func configureUI() {
       view.backgroundColor = .twitterBlue
       navigationController?.navigationBar.barStyle = .black
+      configureActivityIndicator()
       configureAppLogo()
       configureTextFields()
       configureLoginButton()
       configureNavigateToRegisterButton()
+   }
+
+
+   fileprivate func configureActivityIndicator() {
+      view.addSubview(activityIndicator)
+      activityIndicator.centerY(inView: view)
+      activityIndicator.centerX(inView: view)
    }
 
    fileprivate func configureAppLogo() {
