@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46219E96282713550043A3AC /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46219E95282713550043A3AC /* BaseService.swift */; };
+		46219E982827147B0043A3AC /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46219E972827147B0043A3AC /* RegisterView.swift */; };
 		46500B6C282318330000AC60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46500B6B282318330000AC60 /* AppDelegate.swift */; };
 		46500B6E282318330000AC60 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46500B6D282318330000AC60 /* SceneDelegate.swift */; };
 		46500B73282318330000AC60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46500B71282318330000AC60 /* Main.storyboard */; };
@@ -30,7 +32,6 @@
 		467880D928268BEA00604160 /* LoginServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467880D828268BEA00604160 /* LoginServiceProtocol.swift */; };
 		467880DB28268DDD00604160 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467880DA28268DDD00604160 /* LoginViewModel.swift */; };
 		467880DD2826914B00604160 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467880DC2826914B00604160 /* BaseViewModel.swift */; };
-		467880E02826916A00604160 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467880DF2826916A00604160 /* BaseService.swift */; };
 		467880E22826917700604160 /* BaseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467880E12826917700604160 /* BaseServiceProtocol.swift */; };
 		469ABA84282462C900357D00 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469ABA83282462C900357D00 /* UIColorExtensions.swift */; };
 		469ABA87282464CE00357D00 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469ABA86282464CE00357D00 /* RegisterController.swift */; };
@@ -39,6 +40,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		46219E95282713550043A3AC /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
+		46219E972827147B0043A3AC /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		46500B68282318330000AC60 /* Twitter-Clone-UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Twitter-Clone-UIKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		46500B6B282318330000AC60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46500B6D282318330000AC60 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,7 +64,6 @@
 		467880D828268BEA00604160 /* LoginServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceProtocol.swift; sourceTree = "<group>"; };
 		467880DA28268DDD00604160 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		467880DC2826914B00604160 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
-		467880DF2826916A00604160 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		467880E12826917700604160 /* BaseServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseServiceProtocol.swift; sourceTree = "<group>"; };
 		469ABA83282462C900357D00 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		469ABA86282464CE00357D00 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 		46500B82282318D80000AC60 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				46219E972827147B0043A3AC /* RegisterView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -221,8 +224,8 @@
 		467880DE2826915E00604160 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				467880DF2826916A00604160 /* BaseService.swift */,
 				467880E12826917700604160 /* BaseServiceProtocol.swift */,
+				46219E95282713550043A3AC /* BaseService.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -334,9 +337,10 @@
 				469ABA84282462C900357D00 /* UIColorExtensions.swift in Sources */,
 				46500B8C28231C980000AC60 /* NotificationController.swift in Sources */,
 				4672026F2825AEE400571BB2 /* RegisterService.swift in Sources */,
+				46219E982827147B0043A3AC /* RegisterView.swift in Sources */,
 				46500B8E28231CA90000AC60 /* ConversationsController.swift in Sources */,
+				46219E96282713550043A3AC /* BaseService.swift in Sources */,
 				467202772825D58A00571BB2 /* Constants.swift in Sources */,
-				467880E02826916A00604160 /* BaseService.swift in Sources */,
 				467202722825AEFC00571BB2 /* RegisterServiceProtocol.swift in Sources */,
 				46500B91282335A80000AC60 /* UIViewExtensions.swift in Sources */,
 				467880E22826917700604160 /* BaseServiceProtocol.swift in Sources */,
