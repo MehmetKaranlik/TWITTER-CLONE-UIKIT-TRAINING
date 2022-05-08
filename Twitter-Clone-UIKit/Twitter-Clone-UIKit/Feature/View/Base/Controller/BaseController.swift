@@ -17,12 +17,12 @@ class BaseController: UITabBarController {
    let notification = NotificationController()
    let conversations = ConversationsController()
 
-   let actionButton: UIButton = {
-      let button = UIButton(type: .system)
-      button.backgroundColor = .twitterBlue
-      button.tintColor = .white
+   lazy var actionButton: UIButton = {
+      let button = CustomButton
+                  .rounded(title: nil, titleFont: nil, titleColor: .none,
+                  backgroundColor: UIColor.twitterBlue, cornerRadius: 25)
       button.setImage(UIImage(named: "new_tweet"), for: .normal)
-      button.layer.cornerRadius = 25
+      button.tintColor = .white
       button.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
       return button
    }()
@@ -35,21 +35,26 @@ class BaseController: UITabBarController {
 
    override func viewDidLoad() {
       super.viewDidLoad()
-      configureViewContoller()
-      configureUI()
+      if viewModel.checkIfuserLoggedIn(viewController: self) {
+         configureViewContoller()
+         configureService()
+         configureUI()
+      }
    }
 
    // MARK: helpers
 
-   private func configureViewContoller() {
-      viewModel.checkIfuserLoggedIn(viewController: self)
+   func configureService() {
+      viewModel.fetchUserInfo()
+   }
+
+    func configureViewContoller() {
+
       configureTabBar()
 
       viewControllers = populateTabController(
-         images: ["home_unselected",
-                  "search_unselected",
-                  "like_unselected",
-                  "ic_mail_outline_white_2x-1"],
+         images: ["home_unselected","search_unselected",
+                  "like_unselected","ic_mail_outline_white_2x-1"],
          views: [feed, explore, notification, conversations])
    }
 

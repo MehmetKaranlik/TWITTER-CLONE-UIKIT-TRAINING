@@ -8,7 +8,6 @@
 import UIKit
 
 class Utilities {
-
    let profileImagePlaceHolderUrl = "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
 
    func inputContainerView(withImage: UIImage, textField: UITextField, textFieldPlaceHolder: String) -> UIView {
@@ -37,5 +36,13 @@ class Utilities {
       return view
    }
 
-
+   static func returnKeyWindow() -> UIWindow? {
+      guard let windows = UIApplication.shared
+         .connectedScenes.filter({ $0.activationState == .foregroundActive })
+         .compactMap({ $0 as? UIWindowScene })
+         .first?.windows,
+         let keyWindow = windows.filter({ $0.isKeyWindow }).first
+      else { return nil }
+      return keyWindow
+   }
 }

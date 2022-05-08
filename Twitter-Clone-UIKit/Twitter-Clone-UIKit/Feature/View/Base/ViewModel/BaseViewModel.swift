@@ -14,16 +14,17 @@ class BaseViewModel {
 
    let service = BaseService()
 
-   func checkIfuserLoggedIn(viewController :UIViewController) {
+   func checkIfuserLoggedIn(viewController :UIViewController) -> Bool {
       if !service.checkUserLoggedIn() {
-         print("calisti")
          viewController.modalPresentationStyle = .fullScreen
          let navigationPresentation = UINavigationController(rootViewController: LoginController())
          navigationPresentation.modalPresentationStyle = .fullScreen
          DispatchQueue.main.async {
             viewController.present(navigationPresentation, animated: false)
          }
+         return false
       }
+      return true
    }
 
    func LogoutUser() {
@@ -32,6 +33,10 @@ class BaseViewModel {
       } catch let error {
          print(error.localizedDescription)
       }
+   }
+
+   func fetchUserInfo() {
+      service.fetchCurrentUserData()
    }
 
    

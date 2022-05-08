@@ -5,14 +5,12 @@
 //  Created by mehmet karanlık on 7.05.2022.
 //
 
-import Foundation
 import FirebaseAuth
+import Foundation
 
 protocol BaseServiceProtocol {
+   var auth: Auth { get }
 
-   var auth : Auth { get }
-
-func checkUserLoggedIn() -> Bool
-
-
+   func checkUserLoggedIn() -> Bool
+   func fetchCurrentUserData()
 }

@@ -42,22 +42,30 @@ class RegisterView: UIView {
    }()
 
    lazy var emailTFContainer: UIView = {
-      let container = Utilities().inputContainerView(withImage: UIImage(named: "ic_mail_outline_white_2x-1")!, textField: emailTF, textFieldPlaceHolder: "E-mail")
+      let container = Utilities()
+         .inputContainerView(withImage: UIImage(named: "ic_mail_outline_white_2x-1")!,
+                             textField: emailTF, textFieldPlaceHolder: "E-mail")
       return container
    }()
 
    lazy var passwordTFContainer: UIView = {
-      let container = Utilities().inputContainerView(withImage: UIImage(named: "ic_lock_outline_white_2x")!, textField: passwordTF, textFieldPlaceHolder: "Password")
+      let container = Utilities()
+         .inputContainerView(withImage: UIImage(named: "ic_lock_outline_white_2x")!,
+                             textField: passwordTF, textFieldPlaceHolder: "Password")
       return container
    }()
 
    lazy var fullnameTFContainer: UIView = {
-      let container = Utilities().inputContainerView(withImage: UIImage(named: "ic_person_outline_white_2x")!, textField: fullnameTF, textFieldPlaceHolder: "Full name")
+      let container = Utilities()
+         .inputContainerView(withImage: UIImage(named: "ic_person_outline_white_2x")!,
+                             textField: fullnameTF, textFieldPlaceHolder: "Full name")
       return container
    }()
 
    lazy var usernameTFContainer: UIView = {
-      let container = Utilities().inputContainerView(withImage: UIImage(named: "ic_person_outline_white_2x")!, textField: usernameTF, textFieldPlaceHolder: "Username")
+      let container = Utilities()
+         .inputContainerView(withImage: UIImage(named: "ic_person_outline_white_2x")!,
+                             textField: usernameTF, textFieldPlaceHolder: "Username")
       return container
    }()
 
@@ -66,27 +74,23 @@ class RegisterView: UIView {
                                      fullnameTFContainer, usernameTFContainer])
    }()
 
-   let imagePickerViewButton: UIButton = {
-      let button = UIButton(type: .system)
-      button.setImage(UIImage(named: "plus_photo"), for: .normal)
-      button.tintColor = .white
+   lazy var imagePickerViewButton: UIButton = {
+      let button = CustomButton.iconButton(iconName: "plus_photo",tintColor: UIColor.white)
       button.addTarget(self, action: #selector(handlePicker), for: .touchUpInside)
       return button
    }()
 
    lazy var registerButton: UIButton = {
-      let button = UIButton(type: .system)
-      button.setTitle("Register", for: .normal)
-      button.tintColor = .twitterBlue
-      button.titleLabel?.font = .systemFont(ofSize: 15, weight: .bold)
-      button.backgroundColor = .white
-      button.layer.cornerRadius = 5
-      button.addTarget(self, action: #selector(handleRegisterButton), for: .touchUpInside)
+      let button = CustomButton
+                  .rounded(title: "Register",
+                  titleFont: UIFont.systemFont(ofSize: 16, weight: .bold),
+                  titleColor: UIColor.twitterBlue,backgroundColor: UIColor.white,
+                  cornerRadius: 10)
 
       return button
    }()
 
-   let navigateToLoginButton: UIButton = {
+   lazy var navigateToLoginButton: UIButton = {
       let button = CustomButton
          .attributedButton("Already have an account ?",
                            firstPartColor: .white, firstPartFont: .boldSystemFont(ofSize: 16),
@@ -130,8 +134,6 @@ class RegisterView: UIView {
       super.init(coder: aDecoder)
       createSubviews()
    }
-
-
 
    // MARK: helpers
 

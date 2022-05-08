@@ -89,21 +89,406 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		46219E992827E4B80043A3AC /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				46219E972827147B0043A3AC /* RegisterView.swift */,
-				46219E9A2827E4C50043A3AC /* LoginView.swift */,
-			);
-			name = Auth;
-			sourceTree = "<group>";
-		};
 		46219E9C2827EB830043A3AC /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				46219E9D2827EB9F0043A3AC /* CustomButton.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		46219E9F28280D6D0043A3AC /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				46500B8F282335990000AC60 /* Extensions */,
+				469ABA8A28246EE300357D00 /* Utilities */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		46219EA028280D710043A3AC /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				46219EA228280D810043A3AC /* Product */,
+				46219EA128280D760043A3AC /* View */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		46219EA128280D760043A3AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				46219ECA28280EE50043A3AC /* Notification */,
+				46219EC328280EC20043A3AC /* Conversation */,
+				46219EBD28280EA50043A3AC /* Explore */,
+				46219EB028280E090043A3AC /* Auth */,
+				46219EA928280DA90043A3AC /* Feed */,
+				46219EA328280D880043A3AC /* Base */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		46219EA228280D810043A3AC /* Product */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		46219EA328280D880043A3AC /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				46219EA828280DA20043A3AC /* Service */,
+				46219EA728280D9E0043A3AC /* View */,
+				46219EA628280D9A0043A3AC /* Model */,
+				46219EA528280D920043A3AC /* ViewModel */,
+				46219EA428280D8E0043A3AC /* Controller */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		46219EA428280D8E0043A3AC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				46500B85282319CD0000AC60 /* BaseController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		46219EA528280D920043A3AC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				467880DC2826914B00604160 /* BaseViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		46219EA628280D9A0043A3AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		46219EA728280D9E0043A3AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		46219EA828280DA20043A3AC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				467880E12826917700604160 /* BaseServiceProtocol.swift */,
+				46219E95282713550043A3AC /* BaseService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		46219EA928280DA90043A3AC /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				46219EAF28280DE50043A3AC /* View */,
+				46219EAE28280DE10043A3AC /* Controller */,
+				46219EAD28280DDA0043A3AC /* ViewModel */,
+				46219EAC28280DCD0043A3AC /* Model */,
+				46219EAA28280DC30043A3AC /* Service */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		46219EAA28280DC30043A3AC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		46219EAC28280DCD0043A3AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		46219EAD28280DDA0043A3AC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		46219EAE28280DE10043A3AC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				46500B8728231C3F0000AC60 /* FeedController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		46219EAF28280DE50043A3AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		46219EB028280E090043A3AC /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				46219EB228280E0F0043A3AC /* Register */,
+				46219EB128280E0C0043A3AC /* Login */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		46219EB128280E0C0043A3AC /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				46219EB728280E230043A3AC /* Model */,
+				46219EB628280E1D0043A3AC /* Controller */,
+				46219EB528280E190043A3AC /* ViewModel */,
+				46219EB428280E170043A3AC /* Service */,
+				46219EB328280E130043A3AC /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		46219EB228280E0F0043A3AC /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				46219EBC28280E510043A3AC /* Model */,
+				46219EBB28280E4E0043A3AC /* Controller */,
+				46219EBA28280E4C0043A3AC /* Service */,
+				46219EB928280E490043A3AC /* ViewModel */,
+				46219EB828280E460043A3AC /* View */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		46219EB328280E130043A3AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				46219E9A2827E4C50043A3AC /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		46219EB428280E170043A3AC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				467880D628268BE000604160 /* LoginService.swift */,
+				467880D828268BEA00604160 /* LoginServiceProtocol.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		46219EB528280E190043A3AC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				467880DA28268DDD00604160 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		46219EB628280E1D0043A3AC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				469ABA88282464DA00357D00 /* LoginController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		46219EB728280E230043A3AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		46219EB828280E460043A3AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				46219E972827147B0043A3AC /* RegisterView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		46219EB928280E490043A3AC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				467202742825B4F300571BB2 /* RegisterViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		46219EBA28280E4C0043A3AC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				4672026E2825AEE400571BB2 /* RegisterService.swift */,
+				467202712825AEFC00571BB2 /* RegisterServiceProtocol.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		46219EBB28280E4E0043A3AC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				469ABA86282464CE00357D00 /* RegisterController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		46219EBC28280E510043A3AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		46219EBD28280EA50043A3AC /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				46219EC228280EB70043A3AC /* Service */,
+				46219EC128280EB10043A3AC /* Model */,
+				46219EC028280EAE0043A3AC /* Controller */,
+				46219EBF28280EAC0043A3AC /* View */,
+				46219EBE28280EA90043A3AC /* ViewModel */,
+			);
+			path = Explore;
+			sourceTree = "<group>";
+		};
+		46219EBE28280EA90043A3AC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		46219EBF28280EAC0043A3AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		46219EC028280EAE0043A3AC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				46500B8928231C8D0000AC60 /* ExploreController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		46219EC128280EB10043A3AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		46219EC228280EB70043A3AC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		46219EC328280EC20043A3AC /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				46219EC828280ED50043A3AC /* Controller */,
+				46219EC728280ED10043A3AC /* Service */,
+				46219EC628280ECF0043A3AC /* Model */,
+				46219EC528280ECB0043A3AC /* ViewModel */,
+				46219EC428280ECA0043A3AC /* View */,
+			);
+			path = Conversation;
+			sourceTree = "<group>";
+		};
+		46219EC428280ECA0043A3AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		46219EC528280ECB0043A3AC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		46219EC628280ECF0043A3AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		46219EC728280ED10043A3AC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		46219EC828280ED50043A3AC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				46500B8D28231CA90000AC60 /* ConversationsController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		46219ECA28280EE50043A3AC /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				46219ECF28280EFC0043A3AC /* View */,
+				46219ECE28280EF70043A3AC /* Model */,
+				46219ECD28280EEE0043A3AC /* ViewModel */,
+				46219ECC28280EEC0043A3AC /* Service */,
+				46219ECB28280EE90043A3AC /* Controller */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		46219ECB28280EE90043A3AC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				46500B8B28231C980000AC60 /* NotificationController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		46219ECC28280EEC0043A3AC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		46219ECD28280EEE0043A3AC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		46219ECE28280EF70043A3AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		46219ECF28280EFC0043A3AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		46500B5F282318330000AC60 = {
@@ -125,12 +510,8 @@
 		46500B6A282318330000AC60 /* Twitter-Clone-UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				46500B842823193D0000AC60 /* Utils */,
-				46500B83282318E30000AC60 /* Model */,
-				46500B82282318D80000AC60 /* View */,
-				46500B81282318D50000AC60 /* ViewModel */,
-				46500B80282318D30000AC60 /* Controller */,
-				46500B7F282318C30000AC60 /* API */,
+				46219EA028280D710043A3AC /* Feature */,
+				46219E9F28280D6D0043A3AC /* Core */,
 				46500B6B282318330000AC60 /* AppDelegate.swift */,
 				46500B6D282318330000AC60 /* SceneDelegate.swift */,
 				46500B71282318330000AC60 /* Main.storyboard */,
@@ -142,61 +523,6 @@
 			path = "Twitter-Clone-UIKit";
 			sourceTree = "<group>";
 		};
-		46500B7F282318C30000AC60 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				467880DE2826915E00604160 /* Base */,
-				4672026D2825AED000571BB2 /* Auth */,
-			);
-			path = API;
-			sourceTree = "<group>";
-		};
-		46500B80282318D30000AC60 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				469ABA85282464B900357D00 /* Auth */,
-				46500B85282319CD0000AC60 /* BaseController.swift */,
-				46500B8728231C3F0000AC60 /* FeedController.swift */,
-				46500B8928231C8D0000AC60 /* ExploreController.swift */,
-				46500B8B28231C980000AC60 /* NotificationController.swift */,
-				46500B8D28231CA90000AC60 /* ConversationsController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		46500B81282318D50000AC60 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				467202732825B4E700571BB2 /* Auth */,
-				467880DC2826914B00604160 /* BaseViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		46500B82282318D80000AC60 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				46219E992827E4B80043A3AC /* Auth */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
-		46500B83282318E30000AC60 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		46500B842823193D0000AC60 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				469ABA8A28246EE300357D00 /* Utilities */,
-				46500B8F282335990000AC60 /* Extensions */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		46500B8F282335990000AC60 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,60 +530,6 @@
 				469ABA83282462C900357D00 /* UIColorExtensions.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		4672026D2825AED000571BB2 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				467880D528268BD400604160 /* Login */,
-				467202702825AEED00571BB2 /* Register */,
-			);
-			path = Auth;
-			sourceTree = "<group>";
-		};
-		467202702825AEED00571BB2 /* Register */ = {
-			isa = PBXGroup;
-			children = (
-				4672026E2825AEE400571BB2 /* RegisterService.swift */,
-				467202712825AEFC00571BB2 /* RegisterServiceProtocol.swift */,
-			);
-			path = Register;
-			sourceTree = "<group>";
-		};
-		467202732825B4E700571BB2 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				467202742825B4F300571BB2 /* RegisterViewModel.swift */,
-				467880DA28268DDD00604160 /* LoginViewModel.swift */,
-			);
-			path = Auth;
-			sourceTree = "<group>";
-		};
-		467880D528268BD400604160 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				467880D628268BE000604160 /* LoginService.swift */,
-				467880D828268BEA00604160 /* LoginServiceProtocol.swift */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		467880DE2826915E00604160 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				467880E12826917700604160 /* BaseServiceProtocol.swift */,
-				46219E95282713550043A3AC /* BaseService.swift */,
-			);
-			path = Base;
-			sourceTree = "<group>";
-		};
-		469ABA85282464B900357D00 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				469ABA86282464CE00357D00 /* RegisterController.swift */,
-				469ABA88282464DA00357D00 /* LoginController.swift */,
-			);
-			path = Auth;
 			sourceTree = "<group>";
 		};
 		469ABA8A28246EE300357D00 /* Utilities */ = {

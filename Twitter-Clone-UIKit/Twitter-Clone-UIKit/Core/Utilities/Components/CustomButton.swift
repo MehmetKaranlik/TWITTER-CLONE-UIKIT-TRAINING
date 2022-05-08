@@ -7,22 +7,20 @@
 
 import Foundation
 import UIKit
-/*  button.setTitle("Log-in", for: .normal)
- button.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
- button.setTitleColor(UIColor.twitterBlue, for: .normal)
- button.layer.cornerRadius = 5
- button.backgroundColor = .white*/
+
 
 struct CustomButton {
 
-  static func rounded(title: String,
+  static func rounded(title: String? = nil,
                 titleFont : UIFont? = .preferredFont(forTextStyle: .body, compatibleWith: .current),
                 titleColor :UIColor? = UIColor.black,
                 backgroundColor : UIColor? = UIColor.systemBlue,
                 cornerRadius : CGFloat?) -> UIButton {
       let button = UIButton(type: .system)
-      button.setTitle(title, for: .normal)
-      button.setTitleColor(titleColor, for: .normal)
+     if let _ = title {
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(titleColor, for: .normal)
+     }
       button.layer.cornerRadius = cornerRadius ?? 5
       button.backgroundColor = backgroundColor
       return button
@@ -46,6 +44,15 @@ struct CustomButton {
                      ])
       attributedTitle.append(attributedTitlePart2)
       button.setAttributedTitle(attributedTitle, for: .normal)
+      return button
+   }
+
+   static func iconButton(iconName: String, tintColor :UIColor? = nil) -> UIButton {
+      let button = UIButton(type: .system)
+      button.setImage(UIImage(named: iconName), for: .normal)
+      if let _  = tintColor {
+         button.tintColor = tintColor
+      }
       return button
    }
 
