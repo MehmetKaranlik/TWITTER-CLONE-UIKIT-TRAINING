@@ -37,21 +37,5 @@ class Utilities {
       return view
    }
 
-   func attributedButton(_ firstPart: String,_ secondPart: String) -> UIButton {
-      let button = UIButton(type: .system)
 
-      let attributedTitle = NSMutableAttributedString(
-         string: firstPart,
-         attributes: [NSAttributedString.Key.foregroundColor : UIColor.white,
-                      NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15, weight: .regular)
-                     ])
-      let attributedTitlePart2 = NSAttributedString(
-         string: secondPart,
-         attributes: [NSAttributedString.Key.foregroundColor  : UIColor.white,
-                      NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15, weight: .bold)
-                     ])
-      attributedTitle.append(attributedTitlePart2)
-      button.setAttributedTitle(attributedTitle, for: .normal)
-      return button
-   }
 }

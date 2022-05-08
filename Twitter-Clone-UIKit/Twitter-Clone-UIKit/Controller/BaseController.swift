@@ -43,7 +43,6 @@ class BaseController: UITabBarController {
 
    private func configureViewContoller() {
       viewModel.checkIfuserLoggedIn(viewController: self)
-
       configureTabBar()
 
       viewControllers = populateTabController(
