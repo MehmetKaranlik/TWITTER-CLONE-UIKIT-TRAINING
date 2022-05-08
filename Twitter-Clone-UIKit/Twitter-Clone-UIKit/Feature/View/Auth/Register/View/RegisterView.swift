@@ -104,7 +104,6 @@ class RegisterView: UIView {
       let view = UIActivityIndicatorView()
       view.hidesWhenStopped = true
       view.color = .white
-
       return view
    }()
 
