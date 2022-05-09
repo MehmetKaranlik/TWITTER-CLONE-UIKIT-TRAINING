@@ -41,10 +41,13 @@ extension UIView {
          if let height = height {
             heightAnchor.constraint(equalToConstant: height).isActive = true
          }
-
-
-
       }
+
+   func setDimesions(width : CGFloat, height: CGFloat) {
+      self.translatesAutoresizingMaskIntoConstraints = false
+      heightAnchor.constraint(equalToConstant: height).isActive = true
+      widthAnchor.constraint(equalToConstant: width).isActive = true
+   }
 
    func centerX(inView view : UIView) {
       self.translatesAutoresizingMaskIntoConstraints = false

@@ -7,10 +7,11 @@
 
 import FirebaseAuth
 import Foundation
-
+import FirebaseDatabase
 protocol BaseServiceProtocol {
    var auth: Auth { get }
+   var database : Database { get }
 
    func checkUserLoggedIn() -> Bool
-   func fetchCurrentUserData()
+   func fetchCurrentUserData(completionHandler: @escaping (BaseUserModel) -> Void)
 }

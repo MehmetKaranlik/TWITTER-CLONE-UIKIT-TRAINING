@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4608B2D3282944D900AA37F6 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4608B2D2282944D900AA37F6 /* FeedView.swift */; };
+		4608B2D62829495B00AA37F6 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4608B2D52829495B00AA37F6 /* SDWebImage */; };
+		4608B2DE2829721F00AA37F6 /* TweetingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4608B2DD2829721F00AA37F6 /* TweetingController.swift */; };
+		4608B2E02829C25900AA37F6 /* TweetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4608B2DF2829C25900AA37F6 /* TweetingView.swift */; };
 		46219E96282713550043A3AC /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46219E95282713550043A3AC /* BaseService.swift */; };
 		46219E982827147B0043A3AC /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46219E972827147B0043A3AC /* RegisterView.swift */; };
 		46219E9B2827E4C50043A3AC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46219E9A2827E4C50043A3AC /* LoginView.swift */; };
 		46219E9E2827EB9F0043A3AC /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46219E9D2827EB9F0043A3AC /* CustomButton.swift */; };
 		46219ED2282812290043A3AC /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46219ED1282812290043A3AC /* BaseView.swift */; };
+		46219ED428281CFC0043A3AC /* BaseUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46219ED328281CFC0043A3AC /* BaseUserModel.swift */; };
 		46500B6C282318330000AC60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46500B6B282318330000AC60 /* AppDelegate.swift */; };
 		46500B6E282318330000AC60 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46500B6D282318330000AC60 /* SceneDelegate.swift */; };
 		46500B73282318330000AC60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46500B71282318330000AC60 /* Main.storyboard */; };
@@ -43,11 +48,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4608B2D2282944D900AA37F6 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		4608B2DD2829721F00AA37F6 /* TweetingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetingController.swift; sourceTree = "<group>"; };
+		4608B2DF2829C25900AA37F6 /* TweetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetingView.swift; sourceTree = "<group>"; };
 		46219E95282713550043A3AC /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		46219E972827147B0043A3AC /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		46219E9A2827E4C50043A3AC /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		46219E9D2827EB9F0043A3AC /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		46219ED1282812290043A3AC /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		46219ED328281CFC0043A3AC /* BaseUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUserModel.swift; sourceTree = "<group>"; };
 		46500B68282318330000AC60 /* Twitter-Clone-UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Twitter-Clone-UIKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		46500B6B282318330000AC60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46500B6D282318330000AC60 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +93,7 @@
 			files = (
 				4672026A28259F8900571BB2 /* FirebaseDatabase in Frameworks */,
 				4672026828259F8900571BB2 /* FirebaseAuth in Frameworks */,
+				4608B2D62829495B00AA37F6 /* SDWebImage in Frameworks */,
 				4672026C28259F8900571BB2 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,6 +101,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4608B2D7282971EF00AA37F6 /* Tweeting */ = {
+			isa = PBXGroup;
+			children = (
+				4608B2DC2829720900AA37F6 /* Service */,
+				4608B2DB2829720500AA37F6 /* Model */,
+				4608B2DA2829720200AA37F6 /* View */,
+				4608B2D9282971FE00AA37F6 /* ViewModel */,
+				4608B2D8282971F600AA37F6 /* Controller */,
+			);
+			path = Tweeting;
+			sourceTree = "<group>";
+		};
+		4608B2D8282971F600AA37F6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4608B2DD2829721F00AA37F6 /* TweetingController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4608B2D9282971FE00AA37F6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4608B2DA2829720200AA37F6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4608B2DF2829C25900AA37F6 /* TweetingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4608B2DB2829720500AA37F6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4608B2DC2829720900AA37F6 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		46219E9C2827EB830043A3AC /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +179,7 @@
 		46219EA128280D760043A3AC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4608B2D7282971EF00AA37F6 /* Tweeting */,
 				46219ECA28280EE50043A3AC /* Notification */,
 				46219EC328280EC20043A3AC /* Conversation */,
 				46219EBD28280EA50043A3AC /* Explore */,
@@ -144,7 +204,6 @@
 				46219EA728280D9E0043A3AC /* View */,
 				46219EA628280D9A0043A3AC /* Model */,
 				46219EA528280D920043A3AC /* ViewModel */,
-				46219EA428280D8E0043A3AC /* Controller */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -161,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				467880DC2826914B00604160 /* BaseViewModel.swift */,
+				46219EA428280D8E0043A3AC /* Controller */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -168,6 +228,7 @@
 		46219EA628280D9A0043A3AC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				46219ED328281CFC0043A3AC /* BaseUserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -233,6 +294,7 @@
 		46219EAF28280DE50043A3AC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4608B2D2282944D900AA37F6 /* FeedView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -565,6 +627,7 @@
 				4672026728259F8900571BB2 /* FirebaseAuth */,
 				4672026928259F8900571BB2 /* FirebaseDatabase */,
 				4672026B28259F8900571BB2 /* FirebaseStorage */,
+				4608B2D52829495B00AA37F6 /* SDWebImage */,
 			);
 			productName = "Twitter-Clone-UIKit";
 			productReference = 46500B68282318330000AC60 /* Twitter-Clone-UIKit.app */;
@@ -596,6 +659,7 @@
 			mainGroup = 46500B5F282318330000AC60;
 			packageReferences = (
 				4672026628259F8900571BB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				4608B2D42829495B00AA37F6 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 46500B69282318330000AC60 /* Products */;
 			projectDirPath = "";
@@ -625,6 +689,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4608B2DE2829721F00AA37F6 /* TweetingController.swift in Sources */,
+				4608B2D3282944D900AA37F6 /* FeedView.swift in Sources */,
 				467880D728268BE000604160 /* LoginService.swift in Sources */,
 				46219ED2282812290043A3AC /* BaseView.swift in Sources */,
 				467880DD2826914B00604160 /* BaseViewModel.swift in Sources */,
@@ -634,11 +700,13 @@
 				467202752825B4F300571BB2 /* RegisterViewModel.swift in Sources */,
 				469ABA87282464CE00357D00 /* RegisterController.swift in Sources */,
 				46219E9B2827E4C50043A3AC /* LoginView.swift in Sources */,
+				4608B2E02829C25900AA37F6 /* TweetingView.swift in Sources */,
 				469ABA84282462C900357D00 /* UIColorExtensions.swift in Sources */,
 				46500B8C28231C980000AC60 /* NotificationController.swift in Sources */,
 				4672026F2825AEE400571BB2 /* RegisterService.swift in Sources */,
 				46219E982827147B0043A3AC /* RegisterView.swift in Sources */,
 				46500B8E28231CA90000AC60 /* ConversationsController.swift in Sources */,
+				46219ED428281CFC0043A3AC /* BaseUserModel.swift in Sources */,
 				46219E96282713550043A3AC /* BaseService.swift in Sources */,
 				467202772825D58A00571BB2 /* Constants.swift in Sources */,
 				467202722825AEFC00571BB2 /* RegisterServiceProtocol.swift in Sources */,
@@ -870,6 +938,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4608B2D42829495B00AA37F6 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		4672026628259F8900571BB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -881,6 +957,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4608B2D52829495B00AA37F6 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4608B2D42829495B00AA37F6 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
 		4672026728259F8900571BB2 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4672026628259F8900571BB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

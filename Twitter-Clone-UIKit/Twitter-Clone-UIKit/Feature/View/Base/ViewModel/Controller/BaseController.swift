@@ -14,10 +14,12 @@ func actionButtonCallBack()
 class BaseController: UITabBarController {
    // MARK: properties
 
-   let viewModel = BaseViewModel()
+   lazy var viewModel = BaseViewModel()
    let baseView = BaseView()
 
-   let feed = FeedController()
+
+
+   lazy var  feed = FeedController()
    let explore = ExploreController()
    let notification = NotificationController()
    let conversations = ConversationsController()
@@ -45,6 +47,7 @@ class BaseController: UITabBarController {
    }
 
     func configureViewContoller() {
+      baseView.delegate = self
 
       configureTabBar()
 
@@ -90,7 +93,11 @@ class BaseController: UITabBarController {
 
 extension BaseController : BaseControllerDelegate {
    func actionButtonCallBack() {
+      let vc = TweetingController()
+      let nav = UINavigationController(rootViewController: vc)
       
+      nav.modalPresentationStyle = .fullScreen
+      self.present(nav, animated: true)
    }
 
    

@@ -10,9 +10,14 @@ import UIKit
 import FirebaseAuth
 
 
-class BaseViewModel {
+class BaseViewModel : ObservableObject {
 
    let service = BaseService()
+   @Published var currentUser: BaseUserModel? {
+      didSet {
+         passUserToFeedView()
+      }
+   }
 
    func checkIfuserLoggedIn(viewController :UIViewController) -> Bool {
       if !service.checkUserLoggedIn() {
@@ -27,7 +32,7 @@ class BaseViewModel {
       return true
    }
 
-   func LogoutUser() {
+   func logoutUser() {
       do {
          try Auth.auth().signOut()
       } catch let error {
@@ -36,8 +41,16 @@ class BaseViewModel {
    }
 
    func fetchUserInfo() {
-      service.fetchCurrentUserData()
+      service.fetchCurrentUserData { [weak self] currentUser in
+         self?.currentUser = currentUser
+         
+      }
    }
 
+   func passUserToFeedView() {
+      guard let keyWindow = Utilities.returnKeyWindow() else { return }
+      guard let root = keyWindow.rootViewController as?  BaseController else { return }
+      root.feed.feedView.user = self.currentUser
+   }
    
 }
