@@ -41,10 +41,14 @@
 		467880DB28268DDD00604160 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467880DA28268DDD00604160 /* LoginViewModel.swift */; };
 		467880DD2826914B00604160 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467880DC2826914B00604160 /* BaseViewModel.swift */; };
 		467880E22826917700604160 /* BaseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467880E12826917700604160 /* BaseServiceProtocol.swift */; };
+		46839FD42834F8770087407D /* TweetingServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46839FD32834F8770087407D /* TweetingServiceProtocol.swift */; };
+		46839FD62834F9230087407D /* TweetingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46839FD52834F9230087407D /* TweetingService.swift */; };
+		46839FD82834FB860087407D /* TweetingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46839FD72834FB860087407D /* TweetingViewModel.swift */; };
 		469ABA84282462C900357D00 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469ABA83282462C900357D00 /* UIColorExtensions.swift */; };
 		469ABA87282464CE00357D00 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469ABA86282464CE00357D00 /* RegisterController.swift */; };
 		469ABA89282464DA00357D00 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469ABA88282464DA00357D00 /* LoginController.swift */; };
 		469ABA8C28246EFB00357D00 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469ABA8B28246EFB00357D00 /* Utilities.swift */; };
+		46A7430A282D390D00053BC9 /* CaptionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A74309282D390D00053BC9 /* CaptionTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,10 +84,14 @@
 		467880DA28268DDD00604160 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		467880DC2826914B00604160 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		467880E12826917700604160 /* BaseServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseServiceProtocol.swift; sourceTree = "<group>"; };
+		46839FD32834F8770087407D /* TweetingServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetingServiceProtocol.swift; sourceTree = "<group>"; };
+		46839FD52834F9230087407D /* TweetingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetingService.swift; sourceTree = "<group>"; };
+		46839FD72834FB860087407D /* TweetingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetingViewModel.swift; sourceTree = "<group>"; };
 		469ABA83282462C900357D00 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		469ABA86282464CE00357D00 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		469ABA88282464DA00357D00 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		469ABA8B28246EFB00357D00 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		46A74309282D390D00053BC9 /* CaptionTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +132,7 @@
 		4608B2D9282971FE00AA37F6 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				46839FD72834FB860087407D /* TweetingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -146,6 +155,8 @@
 		4608B2DC2829720900AA37F6 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				46839FD32834F8770087407D /* TweetingServiceProtocol.swift */,
+				46839FD52834F9230087407D /* TweetingService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -193,6 +204,7 @@
 		46219EA228280D810043A3AC /* Product */ = {
 			isa = PBXGroup;
 			children = (
+				46A74308282D390100053BC9 /* SubViews */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -607,6 +619,14 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		46A74308282D390100053BC9 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				46A74309282D390D00053BC9 /* CaptionTextView.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -689,7 +709,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46A7430A282D390D00053BC9 /* CaptionTextView.swift in Sources */,
 				4608B2DE2829721F00AA37F6 /* TweetingController.swift in Sources */,
+				46839FD42834F8770087407D /* TweetingServiceProtocol.swift in Sources */,
 				4608B2D3282944D900AA37F6 /* FeedView.swift in Sources */,
 				467880D728268BE000604160 /* LoginService.swift in Sources */,
 				46219ED2282812290043A3AC /* BaseView.swift in Sources */,
@@ -698,6 +720,7 @@
 				469ABA89282464DA00357D00 /* LoginController.swift in Sources */,
 				46219E9E2827EB9F0043A3AC /* CustomButton.swift in Sources */,
 				467202752825B4F300571BB2 /* RegisterViewModel.swift in Sources */,
+				46839FD62834F9230087407D /* TweetingService.swift in Sources */,
 				469ABA87282464CE00357D00 /* RegisterController.swift in Sources */,
 				46219E9B2827E4C50043A3AC /* LoginView.swift in Sources */,
 				4608B2E02829C25900AA37F6 /* TweetingView.swift in Sources */,
@@ -709,6 +732,7 @@
 				46219ED428281CFC0043A3AC /* BaseUserModel.swift in Sources */,
 				46219E96282713550043A3AC /* BaseService.swift in Sources */,
 				467202772825D58A00571BB2 /* Constants.swift in Sources */,
+				46839FD82834FB860087407D /* TweetingViewModel.swift in Sources */,
 				467202722825AEFC00571BB2 /* RegisterServiceProtocol.swift in Sources */,
 				46500B91282335A80000AC60 /* UIViewExtensions.swift in Sources */,
 				467880E22826917700604160 /* BaseServiceProtocol.swift in Sources */,
@@ -871,6 +895,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -899,6 +924,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

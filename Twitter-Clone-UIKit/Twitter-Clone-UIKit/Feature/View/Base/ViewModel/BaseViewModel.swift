@@ -8,16 +8,18 @@
 import Foundation
 import UIKit
 import FirebaseAuth
-
+import SwiftUI
 
 class BaseViewModel : ObservableObject {
 
    let service = BaseService()
+
    @Published var currentUser: BaseUserModel? {
       didSet {
          passUserToFeedView()
       }
    }
+
 
    func checkIfuserLoggedIn(viewController :UIViewController) -> Bool {
       if !service.checkUserLoggedIn() {

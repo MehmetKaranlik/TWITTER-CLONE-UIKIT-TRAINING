@@ -16,6 +16,7 @@ protocol TweetingControllerDelegate : AnyObject {
 class TweetingController: UIViewController {
    // MARK:  properties
    let tweetingView = TweetingView()
+   let tweetingViewModel = TweetingViewModel()
 
 
 
@@ -45,7 +46,16 @@ class TweetingController: UIViewController {
 
 extension TweetingController : TweetingControllerDelegate {
    func handleTweetButtonCallback() {
-
+      tweetingView.loadingView.isHidden = false
+      tweetingViewModel.uploadTweet(caption: tweetingView.captionTextView.text) { bool in
+         if bool {
+            print(bool)
+            self.tweetingView.loadingView.isHidden = true
+            self.dismiss(animated: true)
+         }else {
+            self.tweetingView.loadingView.isHidden = true
+         }
+      }
    }
 
    func handleCancelButtonCallback() {

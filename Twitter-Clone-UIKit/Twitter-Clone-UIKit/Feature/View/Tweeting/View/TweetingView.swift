@@ -11,6 +11,17 @@ import UIKit
 class TweetingView: UIView {
    // MARK: properties
 
+   let captionTextView : CaptionTextView = CaptionTextView()
+
+   var currentUser: BaseUserModel? {
+      didSet {
+         guard let imageString = currentUser?.profileImagePath else { return }
+         guard let url = URL(string: imageString) else { return }
+         profileImageView.sd_setImage(with: url)
+
+      }
+   }
+
    var delegate: TweetingControllerDelegate?
    // nav items
    lazy var leftNavigationButton = UIBarButtonItem(
@@ -21,15 +32,8 @@ class TweetingView: UIView {
          title: "Tweet", titleFont: UIFont.systemFont(ofSize: 5, weight: .bold),
          titleColor: UIColor.white, backgroundColor: UIColor.twitterBlue, cornerRadius: 15)
       button.setDimesions(width: 80, height: 30)
+      button.addTarget(self, action: #selector(handleTweetButton), for: .touchUpInside)
       return button
-   }()
-
-   lazy var tfLeftView : UIImageView = {
-      let iv = UIImageView()
-      iv.setDimesions(width: 42, height: 42)
-      iv.backgroundColor = .red
-      iv.clipsToBounds = true
-      return iv
    }()
 
    lazy var rightNavigationButton: UIBarButtonItem = {
@@ -38,16 +42,43 @@ class TweetingView: UIView {
       return item
    }()
 
-   // regular items
-   lazy var  textField : UITextField = {
-      let tf = UITextField()
-      tf.leftView = tfLeftView
-      tf.placeholder = "What do you have your on mind?"
-      return tf
+   private let profileImageView : UIImageView = {
+      let iv = UIImageView()
+      iv.contentMode = .scaleAspectFill
+      iv.clipsToBounds = true
+      iv.setDimesions(width: 48, height: 48)
+      iv.layer.cornerRadius = 48 / 2
+      return iv
    }()
+
+   private lazy var stack : UIStackView = {
+      let stack = UIStackView(arrangedSubviews: [profileImageView,
+                                                 captionTextView])
+      stack.axis = .horizontal
+      stack.spacing = 12
+      return stack
+   }()
+
+   lazy var loadingView : UIProgressView = {
+      let view = UIProgressView()
+      view.isHidden = true
+      return view
+   }()
+
+   
+
+
 
 
    // MARK: selectors
+
+   @objc func handleTextChange() {
+      if captionTextView.text.count > 0  {
+         captionTextView.placeholderLabel.isHidden = true
+      }else {
+         captionTextView.placeholderLabel.isHidden = false
+      }
+   }
 
    @objc func handleLeftNavButton() {
       delegate?.handleCancelButtonCallback()
@@ -58,30 +89,62 @@ class TweetingView: UIView {
    }
 
    // MARK: init
-
    override init(frame: CGRect) {
       super.init(frame: frame)
+      fetchCurrentUser()
+      configureNotificationCenter()
       configureUI()
-
    }
 
    required init?(coder: NSCoder) {
       super.init(coder: coder)
-      configureUI()
+
    }
 
    // MARK: helpers
 
+
    func configureUI() {
-      configureTextField()
+      configureStack()
+      configureLoadingView()
+   }
+
+   fileprivate func configureStack() {
+      addSubview(stack)
+      stack.anchor(top: safeAreaLayoutGuide.topAnchor,
+                   right: rightAnchor,left: leftAnchor,
+                   paddingTop: 10, paddingRight: 10, paddingLeft: 10)
+   }
+
+   fileprivate func configureLoadingView() {
+      addSubview(loadingView)
+      loadingView.centerX(inView: self)
+      loadingView.centerY(inView: self)
+   }
+
+   fileprivate func configureNotificationCenter() {
+      NotificationCenter
+         .default
+         .addObserver(self,
+                      selector: #selector(handleTextChange),
+                      name: CaptionTextView.textDidChangeNotification, object: nil)
+   }
+
+   func fetchCurrentUser() {
+      guard let keyWindow = Utilities.returnKeyWindow() else { return }
+      guard let root = keyWindow.rootViewController as? BaseController else { return }
+      assignUser(viewModel:  root.viewModel)
+
    }
 
 
-   fileprivate func configureTextField() {
-      addSubview(textField)
-      textField.anchor(top:safeAreaLayoutGuide.topAnchor,
-                       right: rightAnchor, left: leftAnchor,
-                       paddingTop: 0,paddingRight: 0,
-                       paddingLeft: 0, height: 200)
+   private func assignUser(viewModel : BaseViewModel?) {
+      if viewModel?.currentUser != nil {
+         self.currentUser = viewModel?.currentUser
+      }else {
+         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.assignUser(viewModel:  viewModel)
+         }
+      }
    }
 }
