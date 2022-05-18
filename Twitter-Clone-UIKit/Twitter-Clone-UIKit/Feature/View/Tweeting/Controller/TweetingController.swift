@@ -47,15 +47,18 @@ class TweetingController: UIViewController {
 extension TweetingController : TweetingControllerDelegate {
    func handleTweetButtonCallback() {
       tweetingView.loadingView.isHidden = false
-      tweetingViewModel.uploadTweet(caption: tweetingView.captionTextView.text) { bool in
+
+      tweetingViewModel
+         .uploadTweet(caption: tweetingView.captionTextView.text) { [weak self] bool in
          if bool {
             print(bool)
-            self.tweetingView.loadingView.isHidden = true
-            self.dismiss(animated: true)
+            self?.tweetingView.loadingView.isHidden = true
+            self?.dismiss(animated: true)
          }else {
-            self.tweetingView.loadingView.isHidden = true
+            self?.tweetingView.loadingView.isHidden = true
          }
       }
+
    }
 
    func handleCancelButtonCallback() {

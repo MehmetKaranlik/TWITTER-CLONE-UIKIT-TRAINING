@@ -11,6 +11,7 @@ class FeedController: UIViewController {
    // MARK: properties
 
    let feedView = FeedView()
+   let viewModel = FeedViewModel()
 
    // MARK: lifecycle
 

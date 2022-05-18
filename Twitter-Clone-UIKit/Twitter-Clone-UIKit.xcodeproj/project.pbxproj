@@ -44,6 +44,10 @@
 		46839FD42834F8770087407D /* TweetingServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46839FD32834F8770087407D /* TweetingServiceProtocol.swift */; };
 		46839FD62834F9230087407D /* TweetingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46839FD52834F9230087407D /* TweetingService.swift */; };
 		46839FD82834FB860087407D /* TweetingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46839FD72834FB860087407D /* TweetingViewModel.swift */; };
+		46839FDA283501C40087407D /* TweetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46839FD9283501C40087407D /* TweetModel.swift */; };
+		46839FDC283505040087407D /* FeedServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46839FDB283505040087407D /* FeedServiceProtocol.swift */; };
+		46839FDE283505550087407D /* FeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46839FDD283505550087407D /* FeedService.swift */; };
+		46839FE0283505F70087407D /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46839FDF283505F70087407D /* FeedViewModel.swift */; };
 		469ABA84282462C900357D00 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469ABA83282462C900357D00 /* UIColorExtensions.swift */; };
 		469ABA87282464CE00357D00 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469ABA86282464CE00357D00 /* RegisterController.swift */; };
 		469ABA89282464DA00357D00 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469ABA88282464DA00357D00 /* LoginController.swift */; };
@@ -87,6 +91,10 @@
 		46839FD32834F8770087407D /* TweetingServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetingServiceProtocol.swift; sourceTree = "<group>"; };
 		46839FD52834F9230087407D /* TweetingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetingService.swift; sourceTree = "<group>"; };
 		46839FD72834FB860087407D /* TweetingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetingViewModel.swift; sourceTree = "<group>"; };
+		46839FD9283501C40087407D /* TweetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetModel.swift; sourceTree = "<group>"; };
+		46839FDB283505040087407D /* FeedServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedServiceProtocol.swift; sourceTree = "<group>"; };
+		46839FDD283505550087407D /* FeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedService.swift; sourceTree = "<group>"; };
+		46839FDF283505F70087407D /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		469ABA83282462C900357D00 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		469ABA86282464CE00357D00 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		469ABA88282464DA00357D00 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -277,6 +285,8 @@
 		46219EAA28280DC30043A3AC /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				46839FDB283505040087407D /* FeedServiceProtocol.swift */,
+				46839FDD283505550087407D /* FeedService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -284,6 +294,7 @@
 		46219EAC28280DCD0043A3AC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				46839FD9283501C40087407D /* TweetModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -291,6 +302,7 @@
 		46219EAD28280DDA0043A3AC /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				46839FDF283505F70087407D /* FeedViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -709,6 +721,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46839FE0283505F70087407D /* FeedViewModel.swift in Sources */,
 				46A7430A282D390D00053BC9 /* CaptionTextView.swift in Sources */,
 				4608B2DE2829721F00AA37F6 /* TweetingController.swift in Sources */,
 				46839FD42834F8770087407D /* TweetingServiceProtocol.swift in Sources */,
@@ -722,9 +735,11 @@
 				467202752825B4F300571BB2 /* RegisterViewModel.swift in Sources */,
 				46839FD62834F9230087407D /* TweetingService.swift in Sources */,
 				469ABA87282464CE00357D00 /* RegisterController.swift in Sources */,
+				46839FDE283505550087407D /* FeedService.swift in Sources */,
 				46219E9B2827E4C50043A3AC /* LoginView.swift in Sources */,
 				4608B2E02829C25900AA37F6 /* TweetingView.swift in Sources */,
 				469ABA84282462C900357D00 /* UIColorExtensions.swift in Sources */,
+				46839FDA283501C40087407D /* TweetModel.swift in Sources */,
 				46500B8C28231C980000AC60 /* NotificationController.swift in Sources */,
 				4672026F2825AEE400571BB2 /* RegisterService.swift in Sources */,
 				46219E982827147B0043A3AC /* RegisterView.swift in Sources */,
@@ -739,6 +754,7 @@
 				469ABA8C28246EFB00357D00 /* Utilities.swift in Sources */,
 				46500B6C282318330000AC60 /* AppDelegate.swift in Sources */,
 				46500B8A28231C8D0000AC60 /* ExploreController.swift in Sources */,
+				46839FDC283505040087407D /* FeedServiceProtocol.swift in Sources */,
 				46500B86282319CD0000AC60 /* BaseController.swift in Sources */,
 				46500B6E282318330000AC60 /* SceneDelegate.swift in Sources */,
 				467880DB28268DDD00604160 /* LoginViewModel.swift in Sources */,
