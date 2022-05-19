@@ -35,6 +35,8 @@ class FeedController: UICollectionViewController {
       //view = feedView
       collectionView.register(TweetCell.self,
                               forCellWithReuseIdentifier: reuseIdentifier)
+      collectionView.dataSource = self
+      collectionView.delegate = self
       configureNavigationItemView()
    }
 
@@ -48,13 +50,13 @@ class FeedController: UICollectionViewController {
    }
 }
 
-
+// MARK:  UICollectionViewDelegate & DataSource
 extension FeedController {
 
 
    override func collectionView(_ collectionView: UICollectionView,
                                 numberOfItemsInSection section: Int) -> Int {
-      return 5
+      return viewModel.tweets.count
    }
 
    override func collectionView(_ collectionView: UICollectionView,
@@ -63,7 +65,9 @@ extension FeedController {
       lazy var cell = collectionView
          .dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                               for: indexPath) as! TweetCell
+
       cell.delegate = self
+      viewModel.configureCellUponReceiveData(cell: cell, index: indexPath.row)
       return cell
    }
 }
@@ -71,15 +75,20 @@ extension FeedController {
 
 extension FeedController : UICollectionViewDelegateFlowLayout {
 
-   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-      return CGSize(width: view.frame.width, height: 200)
-   }
+   func collectionView(_ collectionView: UICollectionView,
+                       layout collectionViewLayout: UICollectionViewLayout,
+                       sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-   
+      return CGSize(width: view.frame.width, height: 100)
+
+
+   }
 }
 
 
 extension FeedController : TweetCellDelegate {
+
+
    func handleCommentButton() {
       print("comment")
    }
@@ -98,6 +107,4 @@ extension FeedController : TweetCellDelegate {
       print("share")
 
    }
-
-
 }

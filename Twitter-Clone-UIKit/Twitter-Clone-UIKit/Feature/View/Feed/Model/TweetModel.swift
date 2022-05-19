@@ -9,9 +9,9 @@ import Foundation
 
 
 struct Tweet : Codable {
-   private let caption,uid,tweetID : String?
-   private let likes,retweets : Int?
-   private let timestamp: Date?
+    let caption,uid,tweetID : String?
+    let likes,retweets : Int?
+    let timestamp: Date?
 
    init(tweetID: String,dictionary: [String: Any?]) {
       self.tweetID = tweetID

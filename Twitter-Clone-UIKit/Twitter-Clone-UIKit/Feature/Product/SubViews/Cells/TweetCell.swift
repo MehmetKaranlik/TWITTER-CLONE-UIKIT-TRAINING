@@ -11,9 +11,7 @@ import UIKit
 class TweetCell: UICollectionViewCell {
    // MARK: properties
 
-
-
-    var delegate : TweetCellDelegate?
+   var delegate: TweetCellDelegate?
 
    let profileImageView: UIImageView = {
       let iv = UIImageView()
@@ -21,22 +19,13 @@ class TweetCell: UICollectionViewCell {
       iv.layer.cornerRadius = 60 / 2
       iv.clipsToBounds = true
       iv.backgroundColor = .twitterBlue
+      iv.contentMode = .scaleAspectFill
       return iv
    }()
 
    let headerUserInfoText: UILabel = {
       let label = UILabel()
-      let attributedString = NSAttributedString(
-         string: "Eddie Brock",
-         attributes: [NSAttributedString.Key.foregroundColor: UIColor.black,
-                      NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16)])
-      let attributedString2 = NSAttributedString(
-         string: " @eddie 3h",
-         attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray,
-                      NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)])
-      var completeAttributedString = AttributedString(attributedString)
-      completeAttributedString.append(AttributedString(attributedString2))
-      label.attributedText = NSAttributedString(completeAttributedString)
+    
       return label
    }()
 
@@ -48,75 +37,78 @@ class TweetCell: UICollectionViewCell {
       return label
    }()
 
-   let seperatorView: UIView = {
+   private let seperatorView: UIView = {
       let view = UIView()
       view.heightAnchor.constraint(equalToConstant: 0.75).isActive = true
       view.backgroundColor = .systemGroupedBackground
       return view
    }()
 
-   lazy var commentButton : UIButton = {
+   private lazy var commentButton: UIButton = {
       let button = UIButton()
       button.setImage(UIImage(named: "comment"), for: .normal)
       button.setDimesions(width: 20, height: 20)
       button.tintColor = .darkGray
-      button.addTarget(self, action:  #selector(handleCommentButton(_:)), for: .touchUpInside)
+      button.addTarget(self, action: #selector(handleCommentButton(_:)), for: .touchUpInside)
       return button
    }()
-   lazy var retweetButton : UIButton = {
+
+   private lazy var retweetButton: UIButton = {
       let button = UIButton()
       button.setImage(UIImage(named: "retweet"), for: .normal)
       button.setDimesions(width: 20, height: 20)
       button.tintColor = .darkGray
-      button.addTarget(self, action:  #selector(handleRetweetButton(_:)), for: .touchUpInside)
+      button.addTarget(self, action: #selector(handleRetweetButton(_:)), for: .touchUpInside)
 
       return button
    }()
-   lazy var likeButton : UIButton = {
+
+   private lazy var likeButton: UIButton = {
       let button = UIButton()
       button.setImage(UIImage(named: "like"), for: .normal)
       button.setDimesions(width: 20, height: 20)
       button.tintColor = .darkGray
-      button.addTarget(self, action:  #selector(handleLikeButton(_:)), for: .touchUpInside)
+      button.addTarget(self, action: #selector(handleLikeButton(_:)), for: .touchUpInside)
 
       return button
    }()
-   lazy var shareButton : UIButton = {
+
+   private lazy var shareButton: UIButton = {
       let button = UIButton()
       button.setImage(UIImage(named: "share"), for: .normal)
       button.setDimesions(width: 20, height: 20)
       button.tintColor = .darkGray
-      button.addTarget(self, action:  #selector(handleShareButton(_:)), for: .touchUpInside)
+      button.addTarget(self, action: #selector(handleShareButton(_:)), for: .touchUpInside)
 
       return button
    }()
 
-   lazy var buttonRow : UIStackView = {
+   private lazy var buttonRow: UIStackView = {
       let stack = UIStackView(arrangedSubviews: [
-         commentButton,retweetButton,likeButton,shareButton
+         commentButton, retweetButton, likeButton, shareButton
       ])
       stack.axis = .horizontal
       stack.distribution = .equalSpacing
       return stack
    }()
 
+   // MARK: selectors
 
-   // MARK:  selectors
-
-
-   @objc func handleCommentButton(_ sender : UIButton) {
+   @objc private func handleCommentButton(_ sender: UIButton) {
       delegate?.handleCommentButton()
    }
-   @objc func handleRetweetButton(_ sender : UIButton) {
+
+   @objc private func handleRetweetButton(_ sender: UIButton) {
       delegate?.handleRetweetButton()
    }
-   @objc func handleLikeButton(_ sender : UIButton) {
+
+   @objc private func handleLikeButton(_ sender: UIButton) {
       delegate?.handleLikeButton()
    }
-   @objc func handleShareButton(_ sender : UIButton) {
+
+   @objc private func handleShareButton(_ sender: UIButton) {
       delegate?.handleShareButton()
    }
-   
 
    // MARK: init
 
@@ -137,10 +129,7 @@ class TweetCell: UICollectionViewCell {
       configureHeaderUserInfoText()
       configureCaptionLabel()
       configureSeparatorView()
-      addSubview(buttonRow)
-      buttonRow.anchor(bottom: seperatorView.topAnchor, right: self.rightAnchor,
-                       left: self.leftAnchor, paddingBottom: 8,
-                       paddingRight: 64, paddingLeft: 64)
+      configureButtonRow()
    }
 
    fileprivate func configureProfileImage() {
@@ -167,4 +156,13 @@ class TweetCell: UICollectionViewCell {
       seperatorView.anchor(bottom: bottomAnchor, right: rightAnchor,
                            left: leftAnchor, paddingRight: 16, paddingLeft: 16)
    }
+
+   fileprivate func configureButtonRow() {
+      addSubview(buttonRow)
+      buttonRow.anchor(bottom: seperatorView.topAnchor, right: rightAnchor,
+                       left: leftAnchor, paddingBottom: 8,
+                       paddingRight: 64, paddingLeft: 64)
+   }
+
+
 }

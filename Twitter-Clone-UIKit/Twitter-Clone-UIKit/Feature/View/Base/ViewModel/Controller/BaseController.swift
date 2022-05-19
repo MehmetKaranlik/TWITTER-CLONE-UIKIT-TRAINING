@@ -8,9 +8,8 @@ import FirebaseAuth
 import UIKit
 
 protocol BaseControllerDelegate {
-func actionButtonCallBack()
+   func actionButtonCallBack()
 }
-
 
 class BaseController: UITabBarController {
    // MARK: properties
@@ -18,17 +17,12 @@ class BaseController: UITabBarController {
    lazy var viewModel = BaseViewModel()
    let baseView = BaseView()
 
-
-
-   lazy var  feed = FeedController(collectionViewLayout: UICollectionViewFlowLayout())
+   lazy var feed = FeedController(collectionViewLayout: UICollectionViewFlowLayout())
    let explore = ExploreController()
    let notification = NotificationController()
    let conversations = ConversationsController()
 
-
    // MARK: selectors
-
-   
 
    // MARK: lifecycle
 
@@ -47,14 +41,14 @@ class BaseController: UITabBarController {
       viewModel.fetchUserInfo()
    }
 
-    func configureViewContoller() {
+   func configureViewContoller() {
       baseView.delegate = self
 
       configureTabBar()
 
       viewControllers = populateTabController(
-         images: ["home_unselected","search_unselected",
-                  "like_unselected","ic_mail_outline_white_2x-1"],
+         images: ["home_unselected", "search_unselected",
+                  "like_unselected", "ic_mail_outline_white_2x-1"],
          views: [feed, explore, notification, conversations])
    }
 
@@ -62,12 +56,13 @@ class BaseController: UITabBarController {
       tabBar.barTintColor = .white
       configureActionButton()
    }
+
    private func configureActionButton() {
       view.addSubview(baseView.actionButton)
       baseView.actionButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                          right: view.safeAreaLayoutGuide.rightAnchor,
-                          paddingBottom: 75, paddingRight: 20,
-                          width: 50, height: 50)
+                                   right: view.safeAreaLayoutGuide.rightAnchor,
+                                   paddingBottom: 75, paddingRight: 20,
+                                   width: 50, height: 50)
    }
 
    fileprivate func configureTabBar() {
@@ -76,7 +71,6 @@ class BaseController: UITabBarController {
       tabBar.unselectedItemTintColor = .gray.withAlphaComponent(0.7)
       tabBar.barStyle = .black
    }
-
 
    private func populateTabController(images: [String], views: [UIViewController]) -> [UINavigationController] {
       var navigationControllers = [UINavigationController]()
@@ -91,16 +85,12 @@ class BaseController: UITabBarController {
    }
 }
 
-
-extension BaseController : BaseControllerDelegate {
+extension BaseController: BaseControllerDelegate {
    func actionButtonCallBack() {
       let vc = TweetingController()
       let nav = UINavigationController(rootViewController: vc)
-      
+
       nav.modalPresentationStyle = .fullScreen
-      self.present(nav, animated: true)
+      present(nav, animated: true)
    }
-
-   
 }
-

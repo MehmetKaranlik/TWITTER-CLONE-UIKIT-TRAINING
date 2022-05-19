@@ -45,4 +45,32 @@ class Utilities {
       else { return nil }
       return keyWindow
    }
+
+   static func returnAttributedTweetHeader(fullname: String,
+                                           userName: String, timeStamp: Double) -> AttributedString {
+      let attributedString = NSAttributedString(
+         string: "\(fullname)",
+         attributes: [NSAttributedString.Key.foregroundColor: UIColor.black,
+                      NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16)])
+      let attributedString2 = NSAttributedString(
+         string: " @\(userName) \(dateFormatter(timeStamp))",
+         attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray,
+                      NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)])
+      var completeAttributedString = AttributedString(attributedString)
+      completeAttributedString.append(AttributedString(attributedString2))
+      return completeAttributedString
+   }
+
+   static private func dateFormatter(_ timeStamp: Double) -> String {
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateStyle = .full
+      let nowTimestamp = Date.now.timeIntervalSince1970
+      let calculatedTimeStamp = nowTimestamp - timeStamp
+      let date = Date(timeIntervalSince1970: calculatedTimeStamp)
+      let formattedDate = dateFormatter.string(from: date)
+      return formattedDate
+
+
+
+   }
 }

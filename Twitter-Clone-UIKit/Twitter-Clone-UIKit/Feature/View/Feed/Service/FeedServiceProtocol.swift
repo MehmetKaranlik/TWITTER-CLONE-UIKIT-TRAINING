@@ -7,12 +7,14 @@
 
 import Foundation
 import FirebaseDatabase
-
+import FirebaseAuth
 
 
 protocol FeedServiceProtocol {
 
    var database : Database { get }
-
+   var auth : Auth { get }
    func fetchTweets(completion : @escaping (Tweet)-> Void)
+
+   func returnProfileImageOfTweetUser(_ uid : String, completion : @escaping (TweetUser) -> Void)
 }
