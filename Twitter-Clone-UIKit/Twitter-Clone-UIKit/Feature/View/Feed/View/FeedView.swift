@@ -57,3 +57,5 @@ class FeedView : UIView {
       navigationBarImageView.sd_setImage(with: imageUrl)
    }
 }
+
+

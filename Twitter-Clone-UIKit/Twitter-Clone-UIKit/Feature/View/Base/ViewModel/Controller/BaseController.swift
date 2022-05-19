@@ -11,6 +11,7 @@ protocol BaseControllerDelegate {
 func actionButtonCallBack()
 }
 
+
 class BaseController: UITabBarController {
    // MARK: properties
 
@@ -19,7 +20,7 @@ class BaseController: UITabBarController {
 
 
 
-   lazy var  feed = FeedController()
+   lazy var  feed = FeedController(collectionViewLayout: UICollectionViewFlowLayout())
    let explore = ExploreController()
    let notification = NotificationController()
    let conversations = ConversationsController()
@@ -58,7 +59,7 @@ class BaseController: UITabBarController {
    }
 
    private func configureUI() {
-      view.backgroundColor = .white
+      tabBar.barTintColor = .white
       configureActionButton()
    }
    private func configureActionButton() {
@@ -102,3 +103,4 @@ extension BaseController : BaseControllerDelegate {
 
    
 }
+
