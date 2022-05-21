@@ -13,13 +13,16 @@ class TweetCell: UICollectionViewCell {
 
    var delegate: TweetCellDelegate?
 
-   let profileImageView: UIImageView = {
+   lazy var profileImageView: UIImageView = {
       let iv = UIImageView()
       iv.setDimesions(width: 60, height: 60)
       iv.layer.cornerRadius = 60 / 2
       iv.clipsToBounds = true
       iv.backgroundColor = .twitterBlue
       iv.contentMode = .scaleAspectFill
+      let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileImageTap))
+      iv.addGestureRecognizer(tap)
+      iv.isUserInteractionEnabled = true
       return iv
    }()
 
@@ -108,6 +111,10 @@ class TweetCell: UICollectionViewCell {
 
    @objc private func handleShareButton(_ sender: UIButton) {
       delegate?.handleShareButton()
+   }
+
+   @objc private func handleProfileImageTap() {
+      delegate?.handleProfileImageTap()
    }
 
    // MARK: init

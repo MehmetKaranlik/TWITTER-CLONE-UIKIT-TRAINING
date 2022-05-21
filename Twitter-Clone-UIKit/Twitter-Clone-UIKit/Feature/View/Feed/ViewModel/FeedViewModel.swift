@@ -48,7 +48,7 @@ class FeedViewModel : ObservableObject {
             .attributedText = NSAttributedString(
                Utilities.returnAttributedTweetHeader(fullname: user.fullname ?? "",
                                                      userName: user.username ?? "",
-                                                     timeStamp: Double(tweet.timestamp?.description ?? "0") ?? 0.0)
+                                                     timeStamp: tweet.timestamp!)
             )
 
       }

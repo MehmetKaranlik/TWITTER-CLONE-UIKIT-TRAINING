@@ -47,7 +47,7 @@ class Utilities {
    }
 
    static func returnAttributedTweetHeader(fullname: String,
-                                           userName: String, timeStamp: Double) -> AttributedString {
+                                           userName: String, timeStamp: Date) -> AttributedString {
       let attributedString = NSAttributedString(
          string: "\(fullname)",
          attributes: [NSAttributedString.Key.foregroundColor: UIColor.black,
@@ -61,15 +61,12 @@ class Utilities {
       return completeAttributedString
    }
 
-   static private func dateFormatter(_ timeStamp: Double) -> String {
-      let dateFormatter = DateFormatter()
-      dateFormatter.dateStyle = .full
-      let nowTimestamp = Date.now.timeIntervalSince1970
-      let calculatedTimeStamp = nowTimestamp - timeStamp
-      let date = Date(timeIntervalSince1970: calculatedTimeStamp)
-      let formattedDate = dateFormatter.string(from: date)
-      return formattedDate
-
+   static private func dateFormatter(_ timeStamp: Date) -> String {
+     let formatter = DateComponentsFormatter()
+      formatter.allowedUnits = [ .second,.minute,.hour,.weekOfMonth]
+      formatter.maximumUnitCount = 1
+      formatter.unitsStyle = .abbreviated
+      return formatter.string(from: Date.now, to: timeStamp)!
 
 
    }

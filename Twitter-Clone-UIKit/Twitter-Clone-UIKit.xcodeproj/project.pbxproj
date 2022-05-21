@@ -38,6 +38,8 @@
 		467202722825AEFC00571BB2 /* RegisterServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467202712825AEFC00571BB2 /* RegisterServiceProtocol.swift */; };
 		467202752825B4F300571BB2 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467202742825B4F300571BB2 /* RegisterViewModel.swift */; };
 		467202772825D58A00571BB2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467202762825D58A00571BB2 /* Constants.swift */; };
+		46721BDF2838530300D28DD7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46721BDE2838530300D28DD7 /* ProfileViewController.swift */; };
+		46721BE1283866C900D28DD7 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46721BE0283866C900D28DD7 /* ProfileView.swift */; };
 		467880D728268BE000604160 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467880D628268BE000604160 /* LoginService.swift */; };
 		467880D928268BEA00604160 /* LoginServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467880D828268BEA00604160 /* LoginServiceProtocol.swift */; };
 		467880DB28268DDD00604160 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467880DA28268DDD00604160 /* LoginViewModel.swift */; };
@@ -87,6 +89,8 @@
 		467202712825AEFC00571BB2 /* RegisterServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterServiceProtocol.swift; sourceTree = "<group>"; };
 		467202742825B4F300571BB2 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		467202762825D58A00571BB2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		46721BDE2838530300D28DD7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		46721BE0283866C900D28DD7 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		467880D628268BE000604160 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		467880D828268BEA00604160 /* LoginServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceProtocol.swift; sourceTree = "<group>"; };
 		467880DA28268DDD00604160 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -202,6 +206,7 @@
 		46219EA128280D760043A3AC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				46721BD82838529D00D28DD7 /* Profile */,
 				4608B2D7282971EF00AA37F6 /* Tweeting */,
 				46219ECA28280EE50043A3AC /* Notification */,
 				46219EC328280EC20043A3AC /* Conversation */,
@@ -634,6 +639,55 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		46721BD82838529D00D28DD7 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				46721BDD283852E300D28DD7 /* ViewController */,
+				46721BDC283852E000D28DD7 /* Service */,
+				46721BDB283852DD00D28DD7 /* Model */,
+				46721BDA283852D900D28DD7 /* ViewModel */,
+				46721BD9283852D600D28DD7 /* View */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		46721BD9283852D600D28DD7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				46721BE0283866C900D28DD7 /* ProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		46721BDA283852D900D28DD7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		46721BDB283852DD00D28DD7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		46721BDC283852E000D28DD7 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		46721BDD283852E300D28DD7 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				46721BDE2838530300D28DD7 /* ProfileViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		469ABA8A28246EE300357D00 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -771,9 +825,11 @@
 				46500B8A28231C8D0000AC60 /* ExploreController.swift in Sources */,
 				46839FDC283505040087407D /* FeedServiceProtocol.swift in Sources */,
 				46500B86282319CD0000AC60 /* BaseController.swift in Sources */,
+				46721BDF2838530300D28DD7 /* ProfileViewController.swift in Sources */,
 				46500B6E282318330000AC60 /* SceneDelegate.swift in Sources */,
 				4640FB512836778E0081E7A4 /* TweetCell.swift in Sources */,
 				467880DB28268DDD00604160 /* LoginViewModel.swift in Sources */,
+				46721BE1283866C900D28DD7 /* ProfileView.swift in Sources */,
 				46500B8828231C3F0000AC60 /* FeedController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,6 +13,7 @@ protocol TweetCellDelegate {
    func handleRetweetButton()
    func handleLikeButton()
    func handleShareButton()
+   func handleProfileImageTap()
 }
 
 class FeedController: UICollectionViewController {
@@ -25,11 +26,13 @@ class FeedController: UICollectionViewController {
 
    override func viewDidLoad() {
       super.viewDidLoad()
-
+      loadViewIfNeeded()
       configureUI()
    }
 
    // MARK: helpers
+
+
 
    private func configureUI() {
       //view = feedView
@@ -37,7 +40,17 @@ class FeedController: UICollectionViewController {
                               forCellWithReuseIdentifier: reuseIdentifier)
       collectionView.dataSource = self
       collectionView.delegate = self
+      configureNavBar()
+   }
+
+   fileprivate func configureNavBar() {
+      let appereance = UINavigationBarAppearance()
+      let navBar = navigationController?.navigationBar
+      appereance.backgroundColor = .white
+      navBar?.compactAppearance = appereance
+      navBar?.scrollEdgeAppearance = appereance
       configureNavigationItemView()
+
    }
 
    fileprivate func configureNavigationItemView() {
@@ -79,7 +92,7 @@ extension FeedController : UICollectionViewDelegateFlowLayout {
                        layout collectionViewLayout: UICollectionViewLayout,
                        sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-      return CGSize(width: view.frame.width, height: 100)
+      return CGSize(width: view.frame.width, height: 150)
 
 
    }
@@ -87,6 +100,13 @@ extension FeedController : UICollectionViewDelegateFlowLayout {
 
 
 extension FeedController : TweetCellDelegate {
+   func handleProfileImageTap() {
+
+      let vc = ProfileViewController()
+      vc.navigationItem.leftBarButtonItem?.isEnabled = false
+      navigationController?.pushViewController(vc, animated: true)
+   }
+
 
 
    func handleCommentButton() {
@@ -105,6 +125,5 @@ extension FeedController : TweetCellDelegate {
 
    func handleShareButton() {
       print("share")
-
    }
 }
