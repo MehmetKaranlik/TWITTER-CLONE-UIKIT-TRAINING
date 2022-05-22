@@ -9,11 +9,9 @@ import UIKit
 
 class ProfileView: UIView {
    // MARK:  properties
-
-   let backButtonView : UIImageView = {
-      let iv = UIImageView()
-      iv.image = UIImage(named: "baseline_arrow_back_white_24dp")
-      return iv
+   let headerView : ProfileViewHeader = {
+      let view = ProfileViewHeader()
+      return view
    }()
 
 
@@ -21,7 +19,6 @@ class ProfileView: UIView {
    // MARK:  init
    override init(frame: CGRect) {
       super.init(frame: frame)
-      configureUI()
    }
 
    required init?(coder: NSCoder) {
@@ -29,10 +26,7 @@ class ProfileView: UIView {
    }
 
 
-   // MARK:  helpers
-
-   fileprivate func configureUI() {
-      backgroundColor = .white
-   }
 
 }
+
+

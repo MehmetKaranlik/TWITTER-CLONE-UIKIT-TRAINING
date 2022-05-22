@@ -30,6 +30,11 @@ class FeedController: UICollectionViewController {
       configureUI()
    }
 
+   override func viewDidAppear(_ animated: Bool) {
+      navigationController?.navigationBar.isHidden = false
+      collectionView.reloadData()
+   }
+
    // MARK: helpers
 
 
@@ -101,9 +106,7 @@ extension FeedController : UICollectionViewDelegateFlowLayout {
 
 extension FeedController : TweetCellDelegate {
    func handleProfileImageTap() {
-
-      let vc = ProfileViewController()
-      vc.navigationItem.leftBarButtonItem?.isEnabled = false
+      let vc = ProfileViewController(collectionViewLayout: UICollectionViewFlowLayout())
       navigationController?.pushViewController(vc, animated: true)
    }
 
