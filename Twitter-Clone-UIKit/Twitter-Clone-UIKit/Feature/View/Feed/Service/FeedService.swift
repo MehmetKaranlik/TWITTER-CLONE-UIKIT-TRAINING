@@ -28,7 +28,7 @@ struct FeedService: FeedServiceProtocol {
             return
          }
          guard let dictionary = snapshot?.value as? [String:String] else { return}
-         let user = TweetUser(dictionary: dictionary)
+         let user = TweetUser(uid:uid,dictionary: dictionary)
          completion(user)
       }
    }

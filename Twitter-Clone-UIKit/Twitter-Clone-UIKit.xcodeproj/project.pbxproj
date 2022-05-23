@@ -58,6 +58,12 @@
 		469ABA89282464DA00357D00 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469ABA88282464DA00357D00 /* LoginController.swift */; };
 		469ABA8C28246EFB00357D00 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469ABA8B28246EFB00357D00 /* Utilities.swift */; };
 		46A7430A282D390D00053BC9 /* CaptionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A74309282D390D00053BC9 /* CaptionTextView.swift */; };
+		46DBA480283A751A00A37B32 /* Following+Follower+Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DBA47F283A751A00A37B32 /* Following+Follower+Label.swift */; };
+		46DBA482283A80CE00A37B32 /* ProfileViewServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DBA481283A80CE00A37B32 /* ProfileViewServiceProtocol.swift */; };
+		46DBA484283A80E900A37B32 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DBA483283A80E900A37B32 /* ProfileViewModel.swift */; };
+		46DBA486283A86C700A37B32 /* ProfileViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DBA485283A86C700A37B32 /* ProfileViewService.swift */; };
+		46DBA489283B81BF00A37B32 /* ProfileFilterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DBA488283B81BF00A37B32 /* ProfileFilterRow.swift */; };
+		46DBA48B283B83E700A37B32 /* ProfileFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DBA48A283B83E700A37B32 /* ProfileFilterCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +116,12 @@
 		469ABA88282464DA00357D00 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		469ABA8B28246EFB00357D00 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		46A74309282D390D00053BC9 /* CaptionTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionTextView.swift; sourceTree = "<group>"; };
+		46DBA47F283A751A00A37B32 /* Following+Follower+Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Following+Follower+Label.swift"; sourceTree = "<group>"; };
+		46DBA481283A80CE00A37B32 /* ProfileViewServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewServiceProtocol.swift; sourceTree = "<group>"; };
+		46DBA483283A80E900A37B32 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		46DBA485283A86C700A37B32 /* ProfileViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewService.swift; sourceTree = "<group>"; };
+		46DBA488283B81BF00A37B32 /* ProfileFilterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFilterRow.swift; sourceTree = "<group>"; };
+		46DBA48A283B83E700A37B32 /* ProfileFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFilterCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -596,6 +608,7 @@
 			isa = PBXGroup;
 			children = (
 				4640FB502836778E0081E7A4 /* TweetCell.swift */,
+				46DBA48A283B83E700A37B32 /* ProfileFilterCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -664,6 +677,7 @@
 		46721BDA283852D900D28DD7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				46DBA483283A80E900A37B32 /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -678,6 +692,8 @@
 		46721BDC283852E000D28DD7 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				46DBA481283A80CE00A37B32 /* ProfileViewServiceProtocol.swift */,
+				46DBA485283A86C700A37B32 /* ProfileViewService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -690,12 +706,12 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		46721BE22839486B00D28DD7 /* Custom Navbars */ = {
+		46721BE22839486B00D28DD7 /* Collection Headers */ = {
 			isa = PBXGroup;
 			children = (
 				46721BE528394C4800D28DD7 /* ProfileViewHeader.swift */,
 			);
-			path = "Custom Navbars";
+			path = "Collection Headers";
 			sourceTree = "<group>";
 		};
 		469ABA8A28246EE300357D00 /* Utilities */ = {
@@ -711,11 +727,29 @@
 		46A74308282D390100053BC9 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
-				46721BE22839486B00D28DD7 /* Custom Navbars */,
+				46DBA487283B817E00A37B32 /* Custom */,
+				46DBA47E283A750600A37B32 /* Label */,
+				46721BE22839486B00D28DD7 /* Collection Headers */,
 				4640FB4F2836777E0081E7A4 /* Cells */,
-				46A74309282D390D00053BC9 /* CaptionTextView.swift */,
 			);
 			path = SubViews;
+			sourceTree = "<group>";
+		};
+		46DBA47E283A750600A37B32 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				46A74309282D390D00053BC9 /* CaptionTextView.swift */,
+				46DBA47F283A751A00A37B32 /* Following+Follower+Label.swift */,
+			);
+			path = Label;
+			sourceTree = "<group>";
+		};
+		46DBA487283B817E00A37B32 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				46DBA488283B81BF00A37B32 /* ProfileFilterRow.swift */,
+			);
+			path = Custom;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -806,14 +840,17 @@
 				46839FD42834F8770087407D /* TweetingServiceProtocol.swift in Sources */,
 				4608B2D3282944D900AA37F6 /* FeedView.swift in Sources */,
 				467880D728268BE000604160 /* LoginService.swift in Sources */,
+				46DBA482283A80CE00A37B32 /* ProfileViewServiceProtocol.swift in Sources */,
 				46219ED2282812290043A3AC /* BaseView.swift in Sources */,
 				467880DD2826914B00604160 /* BaseViewModel.swift in Sources */,
 				467880D928268BEA00604160 /* LoginServiceProtocol.swift in Sources */,
+				46DBA486283A86C700A37B32 /* ProfileViewService.swift in Sources */,
 				469ABA89282464DA00357D00 /* LoginController.swift in Sources */,
 				46219E9E2827EB9F0043A3AC /* CustomButton.swift in Sources */,
 				467202752825B4F300571BB2 /* RegisterViewModel.swift in Sources */,
 				46839FD62834F9230087407D /* TweetingService.swift in Sources */,
 				469ABA87282464CE00357D00 /* RegisterController.swift in Sources */,
+				46DBA48B283B83E700A37B32 /* ProfileFilterCell.swift in Sources */,
 				46839FDE283505550087407D /* FeedService.swift in Sources */,
 				46219E9B2827E4C50043A3AC /* LoginView.swift in Sources */,
 				4640FB532836D2830081E7A4 /* TweetUserModel.swift in Sources */,
@@ -826,9 +863,11 @@
 				46500B8E28231CA90000AC60 /* ConversationsController.swift in Sources */,
 				46721BE628394C4800D28DD7 /* ProfileViewHeader.swift in Sources */,
 				46219ED428281CFC0043A3AC /* BaseUserModel.swift in Sources */,
+				46DBA480283A751A00A37B32 /* Following+Follower+Label.swift in Sources */,
 				46219E96282713550043A3AC /* BaseService.swift in Sources */,
 				467202772825D58A00571BB2 /* Constants.swift in Sources */,
 				46839FD82834FB860087407D /* TweetingViewModel.swift in Sources */,
+				46DBA489283B81BF00A37B32 /* ProfileFilterRow.swift in Sources */,
 				467202722825AEFC00571BB2 /* RegisterServiceProtocol.swift in Sources */,
 				46500B91282335A80000AC60 /* UIViewExtensions.swift in Sources */,
 				467880E22826917700604160 /* BaseServiceProtocol.swift in Sources */,
@@ -836,6 +875,7 @@
 				46500B6C282318330000AC60 /* AppDelegate.swift in Sources */,
 				46500B8A28231C8D0000AC60 /* ExploreController.swift in Sources */,
 				46839FDC283505040087407D /* FeedServiceProtocol.swift in Sources */,
+				46DBA484283A80E900A37B32 /* ProfileViewModel.swift in Sources */,
 				46500B86282319CD0000AC60 /* BaseController.swift in Sources */,
 				46721BDF2838530300D28DD7 /* ProfileViewController.swift in Sources */,
 				46500B6E282318330000AC60 /* SceneDelegate.swift in Sources */,

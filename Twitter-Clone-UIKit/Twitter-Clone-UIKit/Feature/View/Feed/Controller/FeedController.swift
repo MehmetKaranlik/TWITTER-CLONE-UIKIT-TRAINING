@@ -13,7 +13,7 @@ protocol TweetCellDelegate {
    func handleRetweetButton()
    func handleLikeButton()
    func handleShareButton()
-   func handleProfileImageTap()
+   func handleProfileImageTap(user: TweetUser)
 }
 
 class FeedController: UICollectionViewController {
@@ -105,8 +105,9 @@ extension FeedController : UICollectionViewDelegateFlowLayout {
 
 
 extension FeedController : TweetCellDelegate {
-   func handleProfileImageTap() {
+   func handleProfileImageTap(user : TweetUser) {
       let vc = ProfileViewController(collectionViewLayout: UICollectionViewFlowLayout())
+      vc.viewModel.user = user
       navigationController?.pushViewController(vc, animated: true)
    }
 

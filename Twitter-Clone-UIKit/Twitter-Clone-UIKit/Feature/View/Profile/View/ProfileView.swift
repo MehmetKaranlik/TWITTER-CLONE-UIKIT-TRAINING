@@ -9,11 +9,7 @@ import UIKit
 
 class ProfileView: UIView {
    // MARK:  properties
-   let headerView : ProfileViewHeader = {
-      let view = ProfileViewHeader()
-      return view
-   }()
-
+ 
 
 
    // MARK:  init

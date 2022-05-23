@@ -42,6 +42,7 @@ class FeedViewModel : ObservableObject {
       let tweet = tweets.reversed()[index] as Tweet
       guard let uid = tweet.uid else { return }
       service.returnProfileImageOfTweetUser(uid) { user in
+         cell.user = user
          guard let imageUrl = URL(string: user.profileImagePath ?? "") else {return }
          cell.profileImageView.sd_setImage(with: imageUrl)
          cell.headerUserInfoText

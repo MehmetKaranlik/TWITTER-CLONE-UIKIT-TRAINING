@@ -13,6 +13,8 @@ class TweetCell: UICollectionViewCell {
 
    var delegate: TweetCellDelegate?
 
+   var user:TweetUser?
+
    lazy var profileImageView: UIImageView = {
       let iv = UIImageView()
       iv.setDimesions(width: 60, height: 60)
@@ -114,7 +116,7 @@ class TweetCell: UICollectionViewCell {
    }
 
    @objc private func handleProfileImageTap() {
-      delegate?.handleProfileImageTap()
+      delegate?.handleProfileImageTap(user: self.user!)
    }
 
    // MARK: init
