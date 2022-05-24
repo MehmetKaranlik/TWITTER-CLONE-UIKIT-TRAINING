@@ -16,7 +16,6 @@ class FeedViewModel : ObservableObject {
    var tweets : [Tweet] = [] {
       didSet {
          reloadCollectionView()
-         
       }
    }
 
@@ -35,7 +34,7 @@ class FeedViewModel : ObservableObject {
    func reloadCollectionView() {
       guard let keyWindow = Utilities.returnKeyWindow() else { return }
       guard let root = keyWindow.rootViewController as? BaseController else { return }
-      root.feed.collectionView.reloadData()
+      root.feed.feedView.collectionView.reloadData()
    }
 
    func configureCellUponReceiveData(cell : TweetCell,index: Int) {

@@ -8,6 +8,15 @@
 import Foundation
 import UIKit
 
+protocol TweetCellDelegate {
+   func handleCommentButton()
+   func handleRetweetButton()
+   func handleLikeButton()
+   func handleShareButton()
+   func handleProfileImageTap(user: TweetUser)
+}
+
+
 class TweetCell: UICollectionViewCell {
    // MARK: properties
 

@@ -6,17 +6,11 @@
 //
 
 import UIKit
-private let reuseIdentifier = "TweetCell"
 
-protocol TweetCellDelegate {
-   func handleCommentButton()
-   func handleRetweetButton()
-   func handleLikeButton()
-   func handleShareButton()
-   func handleProfileImageTap(user: TweetUser)
-}
 
-class FeedController: UICollectionViewController {
+
+
+class FeedController: UIViewController {
    // MARK: properties
 
    let feedView = FeedView()
@@ -27,12 +21,12 @@ class FeedController: UICollectionViewController {
    override func viewDidLoad() {
       super.viewDidLoad()
       loadViewIfNeeded()
+      feedView.viewModel = viewModel
       configureUI()
    }
 
    override func viewDidAppear(_ animated: Bool) {
       navigationController?.navigationBar.isHidden = false
-    //  collectionView.reloadData()
    }
 
    // MARK: helpers
@@ -40,11 +34,7 @@ class FeedController: UICollectionViewController {
 
 
    private func configureUI() {
-      //view = feedView
-      collectionView.register(TweetCell.self,
-                              forCellWithReuseIdentifier: reuseIdentifier)
-      collectionView.dataSource = self
-      collectionView.delegate = self
+      view = feedView
       configureNavBar()
    }
 
@@ -68,66 +58,3 @@ class FeedController: UICollectionViewController {
    }
 }
 
-// MARK:  UICollectionViewDelegate & DataSource
-extension FeedController {
-
-
-   override func collectionView(_ collectionView: UICollectionView,
-                                numberOfItemsInSection section: Int) -> Int {
-      return viewModel.tweets.count
-   }
-
-   override func collectionView(_ collectionView: UICollectionView,
-                                cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
-      lazy var cell = collectionView
-         .dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
-                              for: indexPath) as! TweetCell
-
-      cell.delegate = self
-      viewModel.configureCellUponReceiveData(cell: cell, index: indexPath.row)
-      return cell
-   }
-}
-
-
-extension FeedController : UICollectionViewDelegateFlowLayout {
-
-   func collectionView(_ collectionView: UICollectionView,
-                       layout collectionViewLayout: UICollectionViewLayout,
-                       sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-      return CGSize(width: view.frame.width, height: 150)
-
-
-   }
-}
-
-
-extension FeedController : TweetCellDelegate {
-   func handleProfileImageTap(user : TweetUser) {
-      let vc = ProfileViewController(collectionViewLayout: UICollectionViewFlowLayout())
-      vc.viewModel.user = user
-      navigationController?.pushViewController(vc, animated: true)
-   }
-
-
-
-   func handleCommentButton() {
-      print("comment")
-   }
-
-   func handleRetweetButton() {
-      print("retweet")
-
-   }
-
-   func handleLikeButton() {
-      print("like")
-
-   }
-
-   func handleShareButton() {
-      print("share")
-   }
-}

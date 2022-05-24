@@ -9,7 +9,11 @@ import Foundation
 import UIKit
 import SDWebImage
 
+private let reuseIdentifier = "TweetCell"
+
 class FeedView : UIView {
+
+   weak var viewModel : FeedViewModel?
 
    // MARK:  properties
 
@@ -18,6 +22,14 @@ class FeedView : UIView {
          configureLeftBarButton()
       }
    }
+
+
+   lazy var collectionView : UICollectionView = {
+      let layout = UICollectionViewFlowLayout()
+      let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+      return cv
+   }()
+
 
    let navigationBarImageView : UIImageView = {
       let iv = UIImageView()
@@ -28,19 +40,17 @@ class FeedView : UIView {
    }()
 
 
-
-
    // MARK:  selectors
-
-
-
-
 
    // MARK:  init
 
    override init(frame: CGRect) {
-
       super.init(frame: frame)
+      addSubview(collectionView)
+      collectionView.anchor(top: topAnchor, bottom: bottomAnchor,
+                            right: rightAnchor, left: leftAnchor)
+      configureCollectionView()
+
    }
 
    required init?(coder: NSCoder) {
@@ -49,6 +59,13 @@ class FeedView : UIView {
 
 
    // MARK:  helpers
+   func configureCollectionView() {
+      collectionView.register(TweetCell.self,
+                              forCellWithReuseIdentifier: reuseIdentifier)
+      collectionView.delegate = self
+      collectionView.dataSource = self
+   }
+
    func configureLeftBarButton() {
       guard let user = user else { return }
       guard let imagePath = user.profileImagePath else { return }
@@ -58,4 +75,71 @@ class FeedView : UIView {
    }
 }
 
+
+
+
+
+extension FeedView : UICollectionViewDelegate, UICollectionViewDataSource {
+
+
+   func collectionView(_ collectionView: UICollectionView,
+                                numberOfItemsInSection section: Int) -> Int {
+      return viewModel?.tweets.count  ?? 0
+   }
+
+    func collectionView(_ collectionView: UICollectionView,
+                                cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+      lazy var cell = collectionView
+         .dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
+                              for: indexPath) as! TweetCell
+      cell.delegate = self
+       viewModel?.configureCellUponReceiveData(cell: cell,
+                                               index: indexPath.row)
+      return cell
+   }
+}
+
+
+extension FeedView : UICollectionViewDelegateFlowLayout {
+
+   func collectionView(_ collectionView: UICollectionView,
+                       layout collectionViewLayout: UICollectionViewLayout,
+                       sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+      return CGSize(width: frame.width, height: 150)
+
+
+   }
+}
+
+
+extension FeedView : TweetCellDelegate {
+   func handleProfileImageTap(user : TweetUser) {
+      let vc = ProfileViewController(collectionViewLayout: UICollectionViewFlowLayout())
+      vc.viewModel.user = user
+      let window = Utilities.returnKeyWindow()
+      let root = window?.rootViewController as! BaseController
+      root.feed.navigationController?.pushViewController(vc, animated: true)
+   }
+
+
+
+   func handleCommentButton() {
+      print("comment")
+   }
+
+   func handleRetweetButton() {
+      print("retweet")
+   }
+
+   func handleLikeButton() {
+      print("like")
+
+   }
+
+   func handleShareButton() {
+      print("share")
+   }
+}
 

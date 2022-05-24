@@ -17,7 +17,7 @@ class BaseController: UITabBarController {
    lazy var viewModel = BaseViewModel()
    let baseView = BaseView()
 
-   lazy var feed = FeedController(collectionViewLayout: UICollectionViewFlowLayout())
+   lazy var feed = FeedController()
    let explore = ExploreController()
    let notification = NotificationController()
    let conversations = ConversationsController()
