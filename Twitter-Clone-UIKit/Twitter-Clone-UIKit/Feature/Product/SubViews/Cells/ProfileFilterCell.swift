@@ -33,7 +33,7 @@ class ProfileFilterCell: UICollectionViewCell {
          title.textColor = isSelected ? .twitterBlue : .lightGray
          title.font = isSelected ?
             .boldSystemFont(ofSize: 16)
-            : .systemFont(ofSize: 14)
+            : .boldSystemFont(ofSize: 14)
       }
    }
 

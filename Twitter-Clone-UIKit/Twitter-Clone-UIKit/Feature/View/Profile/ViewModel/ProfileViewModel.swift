@@ -41,7 +41,7 @@ class ProfileViewModel {
 
    func configureCellUponData(cell: TweetCell, tweet: Tweet) {
       cell.captionLabel.text = tweet.caption
-      service.returnUserByUID(uid: user?.uid ?? "") { [weak self] user in
+      service.returnUserByUID(uid: user?.uid ?? "") { user in
          cell.headerUserInfoText
             .attributedText = NSAttributedString(Utilities.returnAttributedTweetHeader(
                fullname: user.fullname ?? "", userName: user.username ?? "",

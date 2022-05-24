@@ -10,8 +10,15 @@ import UIKit
 
 private let filterCellID = "filterCell"
 
+protocol ProfileFilterRowDelegate : AnyObject{
+   func didSelectAt(cell : ProfileFilterCell?)
+}
+
+
 class ProfileFilterRow: UIView {
    // MARK:  properties
+
+   weak var delegate : ProfileFilterRowDelegate?
 
    lazy var collectionView : UICollectionView = {
       let layout = UICollectionViewFlowLayout()
@@ -23,12 +30,7 @@ class ProfileFilterRow: UIView {
       return cv
    }()
 
-   lazy var indicatorView : UIView = {
-      let view = UIView()
-      view.setDimesions(width: self.frame.width / 3, height:  1)
-      view.backgroundColor = .twitterBlue
-      return view
-   }()
+
 
 
    // MARK:  init
@@ -48,9 +50,7 @@ class ProfileFilterRow: UIView {
 
    private func configureUI() {
       configureCollectionView()
-      addSubview(indicatorView)
-      indicatorView.anchor(top: collectionView.bottomAnchor,
-                           left: leftAnchor, paddingTop: 0)
+
    }
 
    fileprivate func configureCollectionView() {
@@ -58,6 +58,7 @@ class ProfileFilterRow: UIView {
       addSubview(collectionView)
       collectionView.anchor(top: topAnchor, bottom: bottomAnchor,
                             right: rightAnchor, left: leftAnchor)
+
    }
 }
 
@@ -75,9 +76,32 @@ extension ProfileFilterRow : UICollectionViewDelegate, UICollectionViewDataSourc
       let cell = collectionView
          .dequeueReusableCell(withReuseIdentifier: filterCellID,
                               for: indexPath) as! ProfileFilterCell
+      cell.title.text = defineCellText(indexPath.row)
+
       return cell
    }
 
+   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+      let cell = collectionView.cellForItem(at: indexPath) as! ProfileFilterCell?
+      delegate?
+         .didSelectAt(cell:cell)
+   }
+
+
+   func defineCellText(_ index : Int) -> String {
+      switch index {
+         case 0:
+            return "Tweets"
+         case 1:
+            return "Tweets&Replies"
+         case 2:
+            return "Likes"
+         default:
+            return "Tweets"
+
+      }
+   }
+ 
 
 }
 
@@ -88,10 +112,13 @@ extension ProfileFilterRow : UICollectionViewDelegateFlowLayout {
    func collectionView(_ collectionView: UICollectionView,
                        layout collectionViewLayout: UICollectionViewLayout,
                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-      return CGSize(width: self.frame.width / 3, height: frame.height)
+      return CGSize(width: self.frame.width / 3, height: 49)
    }
 
-   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+   func collectionView(_ collectionView: UICollectionView,
+                       layout collectionViewLayout: UICollectionViewLayout,
+                       minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
       return 0
    }
+   
 }

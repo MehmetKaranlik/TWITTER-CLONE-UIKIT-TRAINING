@@ -28,10 +28,10 @@ class BaseController: UITabBarController {
 
    override func viewDidLoad() {
       super.viewDidLoad()
+      configureViewContoller()
+      configureUI()
       if viewModel.checkIfuserLoggedIn(viewController: self) {
-         configureViewContoller()
          configureService()
-         configureUI()
       }
    }
 
@@ -72,7 +72,8 @@ class BaseController: UITabBarController {
       tabBar.barStyle = .black
    }
 
-   private func populateTabController(images: [String], views: [UIViewController]) -> [UINavigationController] {
+   private func populateTabController(images: [String],
+                                      views: [UIViewController]) -> [UINavigationController] {
       var navigationControllers = [UINavigationController]()
       views.forEach { view in
          let navigationView = UINavigationController(rootViewController: view)

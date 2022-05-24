@@ -18,13 +18,18 @@ struct ProfileService : ProfileServiceProtocol {
    var auth: Auth = Auth.auth()
    
    func fetchTweetsByUID(uid: String, completion: @escaping ([Tweet]) -> Void) {
-      TWEET_DB_REF.child(uid).getData { error, snapshot in
-         var tweets = [Tweet]()
-         guard let tweetData = snapshot?.value as? [String:Any] else {return}
-         tweetData.forEach { key, value in
-            guard let dict = value as? [String:Any] else { return}
-            tweets.append(Tweet(tweetID: key, dictionary: dict))
-
+      var tweets = [Tweet]()
+      TWEET_DB_REF.getData { error, snapshot in
+         if let error = error {
+            print("Something went wrong with fetching tweets : \(error)")
+            return
+         }
+         guard let tweetData = snapshot?.value as? [String:Any] else { return }
+         tweetData.forEach { key,value in
+            guard let dict = value as? [String:Any] else { return }
+            if dict["uid"] as? String == uid {
+               tweets.append(Tweet(tweetID: key, dictionary: dict))
+            }
          }
          completion(tweets)
       }
@@ -32,7 +37,7 @@ struct ProfileService : ProfileServiceProtocol {
 
    func returnUserByUID(uid: String, completion: @escaping (TweetUser) -> Void) {
       USERS_DB_REF.child(uid).getData { error, snapshot in
-         if let error = error {
+         if let _ = error {
             return
          }
          guard let dictionary = snapshot?.value as? [String:String] else { return}

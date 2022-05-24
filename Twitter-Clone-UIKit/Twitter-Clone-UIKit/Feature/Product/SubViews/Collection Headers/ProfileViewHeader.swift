@@ -10,7 +10,7 @@ import UIKit
 class ProfileViewHeader: UICollectionReusableView {
    // MARK: properties
 
-   weak var delegate : ProfileCollectionHeaderDelegate?
+   weak var delegate: ProfileCollectionHeaderDelegate?
 
    let blueBackground: UIView = {
       let view = UIView()
@@ -19,7 +19,14 @@ class ProfileViewHeader: UICollectionReusableView {
       return view
    }()
 
-   lazy var filterButtonRow = ProfileFilterRow()
+   lazy var backButton: UIImageView = {
+      let iv = UIImageView()
+      iv.isUserInteractionEnabled = true
+      iv.image = UIImage(named: "baseline_arrow_back_white_24dp")
+      let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onBackButtonTapped))
+      iv.addGestureRecognizer(tapGesture)
+      return iv
+   }()
 
    let profileImageView: UIImageView = {
       let iv = UIImageView()
@@ -77,21 +84,18 @@ class ProfileViewHeader: UICollectionReusableView {
    lazy var following_followers_label = Following_Follower_Label(followerCount: 1,
                                                                  followedCount: 2)
 
-   lazy var  backButton: UIImageView = {
-      let iv = UIImageView()
-      iv.isUserInteractionEnabled = true
-      iv.image = UIImage(named: "baseline_arrow_back_white_24dp")
-      let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onBackButtonTapped))
-      iv.addGestureRecognizer(tapGesture)
-      return iv
+   lazy var filterButtonRow = ProfileFilterRow()
+
+   lazy var indicatorView: UIView = {
+      let view = UIView()
+      view.setDimesions(width: self.frame.width / 3, height: 2)
+      view.backgroundColor = .twitterBlue
+      return view
    }()
 
+   // MARK: selectors
 
-
-   // MARK:  selectors
-
-   @objc func onBackButtonTapped(_:UIImageView) {
-      
+   @objc func onBackButtonTapped(_: UIImageView) {
       delegate?.handleBackButtonTap()
    }
 
@@ -103,7 +107,7 @@ class ProfileViewHeader: UICollectionReusableView {
    }
 
    @available(*, unavailable)
-   required init?(coder: NSCoder) {
+   required init?(coder _: NSCoder) {
       fatalError("init(coder:) has not been implemented")
    }
 
@@ -112,8 +116,6 @@ class ProfileViewHeader: UICollectionReusableView {
    }
 
    // MARK: helpers
-
-
 
    func configureUI() {
       configureBackground()
@@ -124,10 +126,8 @@ class ProfileViewHeader: UICollectionReusableView {
       configureUserTag()
       configureBioText()
       configureFollowingFollowerLabel()
-      addSubview(filterButtonRow)
-      filterButtonRow.anchor(top: following_followers_label.bottomAnchor,
-                             right: self.rightAnchor, left: self.leftAnchor,
-                             paddingTop: 10, height: 50)
+      configureFilterButtonRow()
+      configureIndicatorView()
    }
 
    fileprivate func configureBackground() {
@@ -139,8 +139,10 @@ class ProfileViewHeader: UICollectionReusableView {
 
    fileprivate func configureBackButton() {
       addSubview(backButton)
-      backButton.anchor(top: self.safeAreaLayoutGuide.topAnchor, left: safeAreaLayoutGuide.leftAnchor,
-                        paddingTop: 0,  paddingLeft: 10, width: 24, height: 24)
+      backButton.anchor(top: safeAreaLayoutGuide.topAnchor,
+                        left: safeAreaLayoutGuide.leftAnchor,
+                        paddingTop: 0, paddingLeft: 10,
+                        width: 24, height: 24)
    }
 
    fileprivate func configureProfileImageView() {
@@ -180,4 +182,31 @@ class ProfileViewHeader: UICollectionReusableView {
       following_followers_label.anchor(top: bioText.bottomAnchor,
                                        left: leftAnchor, paddingTop: 7, paddingLeft: 8)
    }
+
+   fileprivate func configureFilterButtonRow() {
+      addSubview(filterButtonRow)
+      filterButtonRow.delegate = self
+      filterButtonRow.anchor(top: following_followers_label.bottomAnchor,
+                             right: rightAnchor, left: leftAnchor,
+                             paddingTop: 10, height: 50)
+   }
+
+   fileprivate func configureIndicatorView() {
+      addSubview(indicatorView)
+      indicatorView.anchor(bottom: bottomAnchor,
+                           left: leftAnchor)
+   }
+}
+
+
+extension ProfileViewHeader : ProfileFilterRowDelegate {
+   func didSelectAt(cell : ProfileFilterCell?) {
+      guard let cell = cell else { return }
+      let xPosition = cell.frame.origin.x
+      UIView.animate(withDuration: 0.3) { [weak self] in
+         self?.indicatorView.frame.origin.x = xPosition
+      }
+   }
+
+
 }

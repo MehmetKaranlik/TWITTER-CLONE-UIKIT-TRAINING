@@ -32,7 +32,7 @@ class FeedController: UICollectionViewController {
 
    override func viewDidAppear(_ animated: Bool) {
       navigationController?.navigationBar.isHidden = false
-      collectionView.reloadData()
+    //  collectionView.reloadData()
    }
 
    // MARK: helpers
