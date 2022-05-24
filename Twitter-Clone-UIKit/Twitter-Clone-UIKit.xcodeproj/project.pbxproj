@@ -64,6 +64,9 @@
 		46DBA486283A86C700A37B32 /* ProfileViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DBA485283A86C700A37B32 /* ProfileViewService.swift */; };
 		46DBA489283B81BF00A37B32 /* ProfileFilterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DBA488283B81BF00A37B32 /* ProfileFilterRow.swift */; };
 		46DBA48B283B83E700A37B32 /* ProfileFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DBA48A283B83E700A37B32 /* ProfileFilterCell.swift */; };
+		46F5FFEE283D2B6800F136A8 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F5FFED283D2B6800F136A8 /* ExploreView.swift */; };
+		46F5FFF0283D2EF900F136A8 /* SearchUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46F5FFEF283D2EF900F136A8 /* SearchUserCell.xib */; };
+		46F5FFF2283D387C00F136A8 /* SearchUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F5FFF1283D387C00F136A8 /* SearchUserCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -122,6 +125,9 @@
 		46DBA485283A86C700A37B32 /* ProfileViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewService.swift; sourceTree = "<group>"; };
 		46DBA488283B81BF00A37B32 /* ProfileFilterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFilterRow.swift; sourceTree = "<group>"; };
 		46DBA48A283B83E700A37B32 /* ProfileFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFilterCell.swift; sourceTree = "<group>"; };
+		46F5FFED283D2B6800F136A8 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
+		46F5FFEF283D2EF900F136A8 /* SearchUserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchUserCell.xib; sourceTree = "<group>"; };
+		46F5FFF1283D387C00F136A8 /* SearchUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -482,6 +488,7 @@
 		46219EBF28280EAC0043A3AC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				46F5FFED283D2B6800F136A8 /* ExploreView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -609,6 +616,8 @@
 			children = (
 				4640FB502836778E0081E7A4 /* TweetCell.swift */,
 				46DBA48A283B83E700A37B32 /* ProfileFilterCell.swift */,
+				46F5FFEF283D2EF900F136A8 /* SearchUserCell.xib */,
+				46F5FFF1283D387C00F136A8 /* SearchUserCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -821,6 +830,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46500B78282318340000AC60 /* LaunchScreen.storyboard in Resources */,
+				46F5FFF0283D2EF900F136A8 /* SearchUserCell.xib in Resources */,
 				4672026528259AA700571BB2 /* GoogleService-Info.plist in Resources */,
 				46500B75282318340000AC60 /* Assets.xcassets in Resources */,
 				46500B73282318330000AC60 /* Main.storyboard in Resources */,
@@ -848,6 +858,7 @@
 				469ABA89282464DA00357D00 /* LoginController.swift in Sources */,
 				46219E9E2827EB9F0043A3AC /* CustomButton.swift in Sources */,
 				467202752825B4F300571BB2 /* RegisterViewModel.swift in Sources */,
+				46F5FFEE283D2B6800F136A8 /* ExploreView.swift in Sources */,
 				46839FD62834F9230087407D /* TweetingService.swift in Sources */,
 				469ABA87282464CE00357D00 /* RegisterController.swift in Sources */,
 				46DBA48B283B83E700A37B32 /* ProfileFilterCell.swift in Sources */,
@@ -874,6 +885,7 @@
 				469ABA8C28246EFB00357D00 /* Utilities.swift in Sources */,
 				46500B6C282318330000AC60 /* AppDelegate.swift in Sources */,
 				46500B8A28231C8D0000AC60 /* ExploreController.swift in Sources */,
+				46F5FFF2283D387C00F136A8 /* SearchUserCell.swift in Sources */,
 				46839FDC283505040087407D /* FeedServiceProtocol.swift in Sources */,
 				46DBA484283A80E900A37B32 /* ProfileViewModel.swift in Sources */,
 				46500B86282319CD0000AC60 /* BaseController.swift in Sources */,

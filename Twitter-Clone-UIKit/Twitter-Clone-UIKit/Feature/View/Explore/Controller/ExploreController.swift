@@ -9,25 +9,32 @@ import UIKit
 
 class ExploreController: UIViewController {
    // MARK:  properties
-
+   let exploreView = ExploreView()
 
 
    // MARK:  lifecycle
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-       configureUI()
-
-        // Do any additional setup after loading the view.
+      super.viewDidLoad()
+      configureUI()
     }
     
 
     // MARK:  helpers
 
    private func configureUI() {
-      view.backgroundColor = .white
-      navigationItem.title = "Explore"
+      view = exploreView
+      configureNavBar()
 
+   }
+
+   func configureNavBar() {
+      navigationItem.title = "Explore"
+      let appereance = UINavigationBarAppearance()
+      let navBar = navigationController?.navigationBar
+      appereance.backgroundColor = .white
+      navBar?.compactAppearance = appereance
+      navBar?.scrollEdgeAppearance = appereance
    }
 
 }
