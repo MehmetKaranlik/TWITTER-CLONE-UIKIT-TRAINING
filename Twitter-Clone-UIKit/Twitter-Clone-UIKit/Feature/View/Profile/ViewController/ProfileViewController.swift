@@ -34,6 +34,10 @@ class ProfileViewController: UICollectionViewController {
       configureNavBar()
    }
 
+   override func viewDidAppear(_ animated: Bool) {
+      collectionView.reloadData()
+   }
+
    // MARK: helpers
 
    fileprivate func configureCollectionView() {

@@ -9,13 +9,10 @@ import FirebaseAuth
 import Foundation
 import UIKit
 class ProfileViewModel {
-
    let service = ProfileService()
    var tweets: [Tweet]? {
-      didSet {
-      }
+      didSet {}
    }
-
 
    var selectedFilterIndex = 0
 
@@ -54,6 +51,7 @@ class ProfileViewModel {
    fileprivate func sortTweets() {
       tweets?.sort(by: { tweet1, tweet2 in
          tweet1.timestamp! > tweet2.timestamp!
-      })
+      }
+      )
    }
 }
