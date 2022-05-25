@@ -652,15 +652,11 @@
 		46500B6A282318330000AC60 /* Twitter-Clone-UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				46500B79282318340000AC60 /* Info.plist */,
+				4697DB2F283EBE8700FBE1FA /* Resources */,
 				46219EA028280D710043A3AC /* Feature */,
 				46219E9F28280D6D0043A3AC /* Core */,
-				46500B6B282318330000AC60 /* AppDelegate.swift */,
 				46500B6D282318330000AC60 /* SceneDelegate.swift */,
-				46500B71282318330000AC60 /* Main.storyboard */,
-				46500B74282318340000AC60 /* Assets.xcassets */,
-				46500B76282318340000AC60 /* LaunchScreen.storyboard */,
-				46500B79282318340000AC60 /* Info.plist */,
-				4672026428259AA600571BB2 /* GoogleService-Info.plist */,
 			);
 			path = "Twitter-Clone-UIKit";
 			sourceTree = "<group>";
@@ -733,6 +729,18 @@
 				46721BE528394C4800D28DD7 /* ProfileViewHeader.swift */,
 			);
 			path = "Collection Headers";
+			sourceTree = "<group>";
+		};
+		4697DB2F283EBE8700FBE1FA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				46500B6B282318330000AC60 /* AppDelegate.swift */,
+				46500B71282318330000AC60 /* Main.storyboard */,
+				46500B74282318340000AC60 /* Assets.xcassets */,
+				46500B76282318340000AC60 /* LaunchScreen.storyboard */,
+				4672026428259AA600571BB2 /* GoogleService-Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		469ABA8A28246EE300357D00 /* Utilities */ = {
