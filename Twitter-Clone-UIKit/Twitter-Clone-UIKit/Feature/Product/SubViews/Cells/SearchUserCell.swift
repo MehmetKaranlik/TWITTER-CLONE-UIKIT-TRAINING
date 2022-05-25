@@ -7,14 +7,41 @@
 
 import UIKit
 
+protocol SearchUserCellDelegate : AnyObject{
+   func handleProfileImageTap(_ user : TweetUser)
+}
+
 class SearchUserCell: UIView {
+   // MARK:  properties
 
    @IBOutlet  var contentView: SearchUserCell!
 
+   @IBOutlet weak var imageView: UIImageView!
 
+   @IBOutlet weak var userName: UILabel!
+
+   @IBOutlet weak var userTag: UILabel!
+
+
+   unowned var delegate : SearchUserCellDelegate?
+
+
+
+   // MARK:  selectors
+
+   @objc func handleProfileTap() {
+      print("123")
+   }
+
+
+
+
+   // MARK:  init
+   
    override init(frame: CGRect) {
       super.init(frame: frame)
       createNib()
+
    }
 
    required init?(coder: NSCoder) {
@@ -23,7 +50,7 @@ class SearchUserCell: UIView {
    }
 
    override var intrinsicContentSize: CGSize {
-      return CGSize(width: UIView.noIntrinsicMetric, height: 100)
+      return CGSize(width: UIView.noIntrinsicMetric, height: 80)
    }
 
    // MARK:  helpers
@@ -36,17 +63,22 @@ class SearchUserCell: UIView {
 
       contentView.anchor(top: topAnchor, bottom: bottomAnchor,
                          right: rightAnchor, left: leftAnchor)
+
    }
 }
 
 
-class SearchUserCellContainer : UICollectionViewCell {
+class SearchUserCellContainer : UITableViewCell {
+   // MARK:  properties
+
    let cell = SearchUserCell()
 
-   override init(frame: CGRect) {
-      super.init(frame: frame)
-      addSubview(cell)
-      cell.anchor(top: topAnchor, bottom: bottomAnchor, right: rightAnchor, left: leftAnchor)
+
+
+   // MARK:  init
+   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+      super.init(style: style, reuseIdentifier: reuseIdentifier)
+      configureCell()
    }
 
    required init?(coder: NSCoder) {
@@ -54,6 +86,12 @@ class SearchUserCellContainer : UICollectionViewCell {
    }
 
    override var intrinsicContentSize: CGSize {
-      return CGSize(width: UIView.noIntrinsicMetric, height: 100)
+      return CGSize(width: UIView.noIntrinsicMetric, height: 80)
+   }
+
+   // MARK:  helpers
+   fileprivate func configureCell() {
+      addSubview(cell)
+      cell.anchor(top: topAnchor, bottom: bottomAnchor, right: rightAnchor, left: leftAnchor)
    }
 }

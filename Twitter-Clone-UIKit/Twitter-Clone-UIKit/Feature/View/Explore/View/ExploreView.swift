@@ -12,63 +12,60 @@ private let reuseID = "SearchUserID"
 class ExploreView: UIView {
    // MARK:  properties
 
+   weak var viewModel : ExploreViewModel?
 
-   lazy var collectionView : UICollectionView = {
-      let layout = UICollectionViewFlowLayout()
-      let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-
+   lazy var tableView : UITableView = {
+      let cv = UITableView(frame: .zero, style: .plain)
       return cv
    }()
-
-
 
 
    // MARK:  init
    override init(frame: CGRect) {
       super.init(frame: frame)
       configureUI()
-      configureCollectionView()
+      configureTableView()
    }
 
    required init?(coder: NSCoder) {
       fatalError("init(coder:) has not been implemented")
-      configureUI()
-      configureCollectionView()
+
    }
 
    // MARK:  helpers
    func configureUI()  {
       backgroundColor = .white
-      addSubview(collectionView)
-      collectionView.anchor(top: topAnchor, bottom: bottomAnchor,
+      addSubview(tableView)
+      tableView.anchor(top: topAnchor, bottom: bottomAnchor,
                             right: rightAnchor, left: leftAnchor)
 }
-   func configureCollectionView() {
-      collectionView.register(SearchUserCellContainer.self, forCellWithReuseIdentifier: reuseID)
-      collectionView.dataSource = self
-      collectionView.delegate = self
+   func configureTableView() {
+      tableView.register(SearchUserCellContainer.self,
+                         forCellReuseIdentifier: reuseID)
+      tableView.dataSource = self
+      tableView.delegate = self
    }
 
 }
 
 
-extension ExploreView : UICollectionViewDelegate, UICollectionViewDataSource {
-   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      return 25
+extension ExploreView : UITableViewDelegate, UITableViewDataSource {
+   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+      return viewModel?.searchedUsers?.count ?? 0
    }
 
-   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-      let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: reuseID,
-                                                     for: indexPath) as! SearchUserCellContainer
+   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+      let cell = tableView.dequeueReusableCell(withIdentifier: reuseID,
+                                               for: indexPath) as! SearchUserCellContainer
+      viewModel?.configureCell(cell: cell, user: (viewModel?.searchedUsers![indexPath.row])!)
       return cell
+     }
+
+   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      guard let user = viewModel?.searchedUsers?[indexPath.row] else { return}
+      viewModel?.handleCellTap(user: user)
    }
 
 }
 
-extension ExploreView : UICollectionViewDelegateFlowLayout {
-   func collectionView(_ collectionView: UICollectionView,
-                       layout collectionViewLayout: UICollectionViewLayout,
-                       sizeForItemAt indexPath: IndexPath) -> CGSize {
-      return CGSize(width: frame.size.width, height: 100)
-   }
-}
+

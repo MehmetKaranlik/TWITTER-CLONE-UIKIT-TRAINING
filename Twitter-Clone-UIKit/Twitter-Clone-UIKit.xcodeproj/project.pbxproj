@@ -11,6 +11,9 @@
 		4608B2D62829495B00AA37F6 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4608B2D52829495B00AA37F6 /* SDWebImage */; };
 		4608B2DE2829721F00AA37F6 /* TweetingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4608B2DD2829721F00AA37F6 /* TweetingController.swift */; };
 		4608B2E02829C25900AA37F6 /* TweetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4608B2DF2829C25900AA37F6 /* TweetingView.swift */; };
+		46163DD4283D81D30034625E /* ExploreServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46163DD3283D81D30034625E /* ExploreServiceProtocol.swift */; };
+		46163DD6283D82220034625E /* ExploreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46163DD5283D82220034625E /* ExploreService.swift */; };
+		46163DD8283D83FF0034625E /* ExploreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46163DD7283D83FF0034625E /* ExploreViewModel.swift */; };
 		46219E96282713550043A3AC /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46219E95282713550043A3AC /* BaseService.swift */; };
 		46219E982827147B0043A3AC /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46219E972827147B0043A3AC /* RegisterView.swift */; };
 		46219E9B2827E4C50043A3AC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46219E9A2827E4C50043A3AC /* LoginView.swift */; };
@@ -53,6 +56,7 @@
 		46839FDC283505040087407D /* FeedServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46839FDB283505040087407D /* FeedServiceProtocol.swift */; };
 		46839FDE283505550087407D /* FeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46839FDD283505550087407D /* FeedService.swift */; };
 		46839FE0283505F70087407D /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46839FDF283505F70087407D /* FeedViewModel.swift */; };
+		4697311B283E374000409DE0 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4697311A283E374000409DE0 /* UITextFieldExtensions.swift */; };
 		469ABA84282462C900357D00 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469ABA83282462C900357D00 /* UIColorExtensions.swift */; };
 		469ABA87282464CE00357D00 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469ABA86282464CE00357D00 /* RegisterController.swift */; };
 		469ABA89282464DA00357D00 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469ABA88282464DA00357D00 /* LoginController.swift */; };
@@ -73,6 +77,9 @@
 		4608B2D2282944D900AA37F6 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		4608B2DD2829721F00AA37F6 /* TweetingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetingController.swift; sourceTree = "<group>"; };
 		4608B2DF2829C25900AA37F6 /* TweetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetingView.swift; sourceTree = "<group>"; };
+		46163DD3283D81D30034625E /* ExploreServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreServiceProtocol.swift; sourceTree = "<group>"; };
+		46163DD5283D82220034625E /* ExploreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreService.swift; sourceTree = "<group>"; };
+		46163DD7283D83FF0034625E /* ExploreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewModel.swift; sourceTree = "<group>"; };
 		46219E95282713550043A3AC /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		46219E972827147B0043A3AC /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		46219E9A2827E4C50043A3AC /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -114,6 +121,7 @@
 		46839FDB283505040087407D /* FeedServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedServiceProtocol.swift; sourceTree = "<group>"; };
 		46839FDD283505550087407D /* FeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedService.swift; sourceTree = "<group>"; };
 		46839FDF283505F70087407D /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		4697311A283E374000409DE0 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
 		469ABA83282462C900357D00 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		469ABA86282464CE00357D00 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		469ABA88282464DA00357D00 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -481,6 +489,7 @@
 		46219EBE28280EA90043A3AC /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				46163DD7283D83FF0034625E /* ExploreViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -511,6 +520,8 @@
 		46219EC228280EB70043A3AC /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				46163DD3283D81D30034625E /* ExploreServiceProtocol.swift */,
+				46163DD5283D82220034625E /* ExploreService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -659,6 +670,7 @@
 			children = (
 				46500B90282335A80000AC60 /* UIViewExtensions.swift */,
 				469ABA83282462C900357D00 /* UIColorExtensions.swift */,
+				4697311A283E374000409DE0 /* UITextFieldExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -856,6 +868,7 @@
 				467880D928268BEA00604160 /* LoginServiceProtocol.swift in Sources */,
 				46DBA486283A86C700A37B32 /* ProfileViewService.swift in Sources */,
 				469ABA89282464DA00357D00 /* LoginController.swift in Sources */,
+				46163DD6283D82220034625E /* ExploreService.swift in Sources */,
 				46219E9E2827EB9F0043A3AC /* CustomButton.swift in Sources */,
 				467202752825B4F300571BB2 /* RegisterViewModel.swift in Sources */,
 				46F5FFEE283D2B6800F136A8 /* ExploreView.swift in Sources */,
@@ -867,6 +880,7 @@
 				4640FB532836D2830081E7A4 /* TweetUserModel.swift in Sources */,
 				4608B2E02829C25900AA37F6 /* TweetingView.swift in Sources */,
 				469ABA84282462C900357D00 /* UIColorExtensions.swift in Sources */,
+				46163DD8283D83FF0034625E /* ExploreViewModel.swift in Sources */,
 				46839FDA283501C40087407D /* TweetModel.swift in Sources */,
 				46500B8C28231C980000AC60 /* NotificationController.swift in Sources */,
 				4672026F2825AEE400571BB2 /* RegisterService.swift in Sources */,
@@ -889,6 +903,8 @@
 				46839FDC283505040087407D /* FeedServiceProtocol.swift in Sources */,
 				46DBA484283A80E900A37B32 /* ProfileViewModel.swift in Sources */,
 				46500B86282319CD0000AC60 /* BaseController.swift in Sources */,
+				4697311B283E374000409DE0 /* UITextFieldExtensions.swift in Sources */,
+				46163DD4283D81D30034625E /* ExploreServiceProtocol.swift in Sources */,
 				46721BDF2838530300D28DD7 /* ProfileViewController.swift in Sources */,
 				46500B6E282318330000AC60 /* SceneDelegate.swift in Sources */,
 				4640FB512836778E0081E7A4 /* TweetCell.swift in Sources */,
