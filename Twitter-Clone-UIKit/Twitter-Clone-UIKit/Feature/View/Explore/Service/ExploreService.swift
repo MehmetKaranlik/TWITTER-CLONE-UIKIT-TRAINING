@@ -14,11 +14,10 @@ struct ExploreService: ExploreServiceProtocol {
 
    var auth: Auth = .auth()
 
-   func fetchUserByInput(input: String, completion: @escaping ([TweetUser]) -> Void) {
-      var searchedUsers = [TweetUser]()
+   func fetchUserByInput(input: String, completion: @escaping ([BaseUserModel]) -> Void) {
+      var searchedUsers = [BaseUserModel]()
       USERS_DB_REF.getData { error, snapshot in
-         if let error = error {
-            print("Something went wrong with fetching users : \(error)")
+         if let _ = error {
             return
          }
          guard let snap = snapshot?.value as? [String: [String: String]] else { return }
@@ -26,8 +25,7 @@ struct ExploreService: ExploreServiceProtocol {
             guard let fullname = value["fullname"] else { return }
           
             if fullname.lowercased().contains(input.lowercased()) {
-               print("here works as well")
-               searchedUsers.append(TweetUser(uid: key, dictionary: value))
+               searchedUsers.append(BaseUserModel(dictionary: value))
             }
          }
          completion(searchedUsers)

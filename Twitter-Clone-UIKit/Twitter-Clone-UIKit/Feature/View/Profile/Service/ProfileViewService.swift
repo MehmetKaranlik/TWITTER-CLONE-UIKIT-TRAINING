@@ -22,8 +22,7 @@ struct ProfileService : ProfileServiceProtocol {
    func fetchTweetsByUID(uid: String, completion: @escaping ([Tweet]) -> Void) {
       var tweets = [Tweet]()
       TWEET_DB_REF.getData { error, snapshot in
-         if let error = error {
-            print("Something went wrong with fetching tweets : \(error)")
+         if let _ = error {
             return
          }
          guard let tweetData = snapshot?.value as? [String:Any] else { return }
@@ -37,45 +36,37 @@ struct ProfileService : ProfileServiceProtocol {
       }
    }
 
-   func returnUserByUID(uid: String, completion: @escaping (TweetUser) -> Void) {
+   func returnUserByUID(uid: String, completion: @escaping (BaseUserModel) -> Void) {
       USERS_DB_REF.child(uid).getData { error, snapshot in
          if let _ = error {
             return
          }
-         guard let dictionary = snapshot?.value as? [String:String] else { return}
-         completion(TweetUser(uid: uid, dictionary: dictionary))
+         guard let dictionary = snapshot?.value as? [String:Any?] else { return}
+         completion(BaseUserModel(dictionary: dictionary))
       }
    }
 
    func followUser(userUID: String, targetUID: String,
                    completion: @escaping (Database, Error?) -> ()) {
-
-      USER_FOLLOWING_DB.child(userUID).updateChildValues(["uid":targetUID]) { error , dbRef in
-         if let  _ = error {
-            print(error)
-            return
-         }
-         USER_FOLLOWERS_DB.child(targetUID).updateChildValues(["uid": userUID]) { error, dbRef in
-            if let _ = error {
-               print(error)
+      let keyWindow = Utilities.returnKeyWindow()
+      guard let root = keyWindow?.rootViewController as? BaseController else { return }
+      root.viewModel.currentUser?.followings?.append(targetUID)
+      USERS_DB_REF
+         .child(userUID).child("followings").child(targetUID)
+         .updateChildValues(["status":true]) { error , dbRef in
+            if let _ = error {
                return
+            }else {
+               USERS_DB_REF .child(targetUID).child("followers")
+                  .child(userUID).updateChildValues(["status":true])
             }
          }
-      }
    }
    
    func checkIsUserFollowed(targetUID: String,completion: @escaping (Bool) -> ()) {
-      guard let currentUserUID = Auth.auth().currentUser?.uid else { return }
-      USER_FOLLOWING_DB.child(currentUserUID).getData { error, snapshot in
-         if let _ = error {
-            return
-         }
-         guard let dictionary = snapshot?.value as? [String : String] else { return }
-         if dictionary.values.contains(targetUID) {
-            return completion(true)
-         }else {
-            completion (false)
-         }
-      }
+      let keyWindow = Utilities.returnKeyWindow()
+      guard let root = keyWindow?.rootViewController as? BaseController else { return}
+      let condition = root.viewModel.currentUser?.followers?.contains(targetUID) ?? false
+      return completion(condition)
    }
 }

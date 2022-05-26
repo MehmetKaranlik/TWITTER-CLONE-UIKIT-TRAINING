@@ -115,7 +115,7 @@ extension FeedView : UICollectionViewDelegateFlowLayout {
 
 
 extension FeedView : TweetCellDelegate {
-   func handleProfileImageTap(user : TweetUser) {
+   func handleProfileImageTap(user : BaseUserModel) {
       let vc = ProfileViewController()
       vc.viewModel.user = user
       let window = Utilities.returnKeyWindow()

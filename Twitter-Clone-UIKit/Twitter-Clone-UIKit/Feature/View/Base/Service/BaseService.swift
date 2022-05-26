@@ -27,7 +27,7 @@ struct BaseService: BaseServiceProtocol {
     func fetchCurrentUserData(completionHandler: @escaping (BaseUserModel) -> Void ) {
       guard let uid = auth.currentUser?.uid else { return }
       USERS_DB_REF.child(uid).observeSingleEvent(of: .value) {  snapshot in
-         guard var dictionary = snapshot.value as? [String: String?] else { return }
+         guard var dictionary = snapshot.value as? [String: Any?] else { return }
          dictionary["uid"] = uid
          let user = BaseUserModel(dictionary: dictionary)
          completionHandler(user)

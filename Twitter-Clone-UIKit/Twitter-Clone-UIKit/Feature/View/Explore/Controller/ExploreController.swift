@@ -53,7 +53,7 @@ class ExploreController: UIViewController {
    // MARK:  selectors
 
    @objc func handleTextChange(_ textField: UITextField) {
-      print("123")
+
    }
    var cancellables  = Set<AnyCancellable>()
 
@@ -71,12 +71,7 @@ class ExploreController: UIViewController {
 
 
 
-   /*   textFieldPublisher
-         .receive(on: RunLoop.main)
-         .sink(receiveValue: { [weak self] value in
-            print("UITextField.text changed to: \(value)")
-         })
-         .store(in: &cancellables)*/
+
    }
 
 

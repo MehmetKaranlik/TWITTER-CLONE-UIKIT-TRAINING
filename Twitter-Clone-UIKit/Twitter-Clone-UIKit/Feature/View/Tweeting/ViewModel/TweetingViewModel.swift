@@ -20,8 +20,7 @@ class TweetingViewModel : ObservableObject {
                     completion : @escaping (Bool)-> Void) {
       var returnBool : Bool?
       service.uploadTweet(caption: caption) { error, dbRef in
-         if let error = error {
-            print("Something went wrong with uploading tweet : \(error)")
+         if let _ = error {
             returnBool = false
             
          }else {

@@ -14,14 +14,12 @@ class ExploreViewModel : ObservableObject {
 
    var searchInput : String? {
       didSet {
-
          getSearchedUsersByInput(input: searchInput ?? "")
       }
    }
 
-   var searchedUsers : [TweetUser]? {
+   var searchedUsers : [BaseUserModel]? {
       didSet {
-         print("this is worked")
          configureTableViewUponData()
       }
    }
@@ -30,7 +28,7 @@ class ExploreViewModel : ObservableObject {
 
 
 
-   func handleCellTap(user: TweetUser) {
+   func handleCellTap(user: BaseUserModel) {
       let vc = ProfileViewController()
       vc.viewModel.user = user
       let window = Utilities.returnKeyWindow()
@@ -40,7 +38,7 @@ class ExploreViewModel : ObservableObject {
 
 
 
-   func configureCell(cell : SearchUserCellContainer , user : TweetUser) {
+   func configureCell(cell : SearchUserCellContainer , user : BaseUserModel) {
       guard let imageUrl = URL(string: user.profileImagePath ?? "") else { return }
       cell.cell.imageView.sd_setImage(with: imageUrl)
       cell.cell.userName.text = user.fullname
@@ -48,8 +46,7 @@ class ExploreViewModel : ObservableObject {
    }
 
    private   func getSearchedUsersByInput(input: String) {
-      service.fetchUserByInput(input: input) { [weak self]users in
-         print(users)
+      service.fetchUserByInput(input: input) { [weak self] users in
          self?.searchedUsers = users
       }
    }

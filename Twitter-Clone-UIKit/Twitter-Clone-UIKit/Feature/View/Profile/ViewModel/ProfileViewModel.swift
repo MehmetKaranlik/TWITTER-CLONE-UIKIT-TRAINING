@@ -16,25 +16,27 @@ class ProfileViewModel {
 
    var selectedFilterIndex = 0
 
-   var user: TweetUser? {
+   var user: BaseUserModel? {
       didSet {
          service.fetchTweetsByUID(uid: user?.uid ?? "") { [weak self] tweets in
             self?.tweets = tweets
             self?.sortTweets()
+
          }
       }
    }
 
    init() {}
 
-   func configureUserUponData(headerView: ProfileViewHeader, user: TweetUser) {
+   func configureUserUponData(headerView: ProfileViewHeader, user: BaseUserModel) {
       guard let url = URL(string: user.profileImagePath ?? "") else { return }
       headerView.profileImageView.sd_setImage(with: url)
       headerView.userTag.text = "@\(user.username ?? "")"
       headerView.userName.text = user.fullname
       service.checkIsUserFollowed(targetUID: user.uid ?? "") { value in
+         print(value)
          headerView.editProfileButton
-            .setTitle(user.isCurrentUser() ? "Edit Profile" :
+            .setTitle(user.isCurrentUser ? "Edit Profile" :
                         value ?  "Unfollow"  : " Follow", for: .normal)
       }
    }
@@ -46,7 +48,7 @@ class ProfileViewModel {
             .attributedText = NSAttributedString(Utilities.returnAttributedTweetHeader(
                fullname: user.fullname ?? "", userName: user.username ?? "",
                timeStamp: tweet.timestamp ?? Date.now))
-         guard let url = URL(string: user.profileImagePath ?? "") else { return }
+         guard let url = URL(string: user.profileImagePath!) else { return }
          cell.profileImageView.sd_setImage(with: url)
       }
    }
@@ -60,13 +62,19 @@ class ProfileViewModel {
 
 
    func followUser(targetUserUID : String )  {
-      guard let currentUserUID = Auth.auth().currentUser?.uid else { return }
-      service.followUser(userUID: currentUserUID, targetUID: targetUserUID) { db, error in
-         if let _  =  error {
-            print("something went wrong with following user \(error)")
-            return
+      guard let uid = Auth.auth().currentUser?.uid else { return }
+
+      let keyWindow = Utilities.returnKeyWindow()
+
+      guard let root = keyWindow?.rootViewController as? BaseController else { return }
+
+      let condition = root.viewModel.currentUser?.followings?.contains(targetUserUID) ?? false
+
+      if !condition {
+         service.followUser(userUID: uid,
+                            targetUID: targetUserUID) { db, error in if let _  =  error { return }
          }
-         print("targetFollowed")
+      } else {
       }
    }
 }

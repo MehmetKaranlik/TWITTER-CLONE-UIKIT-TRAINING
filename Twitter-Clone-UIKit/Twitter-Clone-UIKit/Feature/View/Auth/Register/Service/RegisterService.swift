@@ -20,16 +20,16 @@ struct RegisterService: RegisterServiceProtocol {
                      fullname: String, username: String,
                      userImage: UIImage?, onServiceComplete: @escaping () -> Void)
    {
-      // create user
+
+     // create user
       auth.createUser(withEmail: email, password: password) { result, error in
 
-         if let error = error {
-            print("something went wrong with user creation : \(error.localizedDescription)")
+         if let _ = error {
             return
          }
          guard let uid = result?.user.uid else { return }
          var values = ["email": email, "password": password,
-                       "fullname": fullname, "username": username]
+                       "fullname": fullname, "username": username, "uid" : uid]
 
          // with user image
          if let userImage = userImage {
@@ -38,8 +38,7 @@ struct RegisterService: RegisterServiceProtocol {
                values["profileImagePath"] = imagePath
 
                USERS_DB_REF.child(uid).updateChildValues(values) { error, _ in
-                  if let error = error {
-                     print("user didnt got created : \(error.localizedDescription)")
+                  if let _ = error {
                      return
                   }
                   onServiceComplete()
@@ -50,8 +49,7 @@ struct RegisterService: RegisterServiceProtocol {
          else {
             values["profileImagePath"] = Utilities().profileImagePlaceHolderUrl
             USERS_DB_REF.child(uid).updateChildValues(values) { error, _ in
-               if let error = error {
-                  print("user didnt got created : \(error.localizedDescription)")
+               if let _ = error {
                   return
                }
                onServiceComplete()
@@ -63,8 +61,7 @@ struct RegisterService: RegisterServiceProtocol {
    internal func uploadUserImage(uid: String, userImage: UIImage, urlPath: @escaping (String) -> Void) {
       guard let imageData = userImage.jpegData(compressionQuality: 0.2) else { return }
       PROFILE_IMAGE_REF.child(uid).putData(imageData) { _, error in
-         if let error = error {
-            print("something went wrong with uploading image : \(error.localizedDescription)")
+         if let _ = error {
             return
          }
          // fetch image url from bucket

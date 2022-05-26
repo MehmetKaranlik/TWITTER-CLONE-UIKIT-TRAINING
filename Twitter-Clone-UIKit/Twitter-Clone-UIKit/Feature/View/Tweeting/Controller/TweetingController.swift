@@ -51,7 +51,6 @@ extension TweetingController : TweetingControllerDelegate {
       tweetingViewModel
          .uploadTweet(caption: tweetingView.captionTextView.text) { [weak self] bool in
          if bool {
-            print(bool)
             self?.tweetingView.loadingView.isHidden = true
             self?.dismiss(animated: true)
          }else {

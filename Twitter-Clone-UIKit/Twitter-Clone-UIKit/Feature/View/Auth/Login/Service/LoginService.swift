@@ -15,8 +15,7 @@ struct LoginService : LoginServiceProtocol {
    func loginUser(email: String, password: String,
                   onFail: @escaping (Bool) -> Void, onSuccess: @escaping (Bool) -> Void) {
       auth.signIn(withEmail: email, password: password) { result, error in
-         if let error = error {
-            print("something went wrong with signing: \(error.localizedDescription)")
+         if let _ = error {
             onFail(false)
             return
          }

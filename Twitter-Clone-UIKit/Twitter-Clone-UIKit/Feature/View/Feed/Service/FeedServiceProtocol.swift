@@ -16,5 +16,5 @@ protocol FeedServiceProtocol {
    var auth : Auth { get }
    func fetchTweets(completion : @escaping (Tweet)-> Void)
 
-   func returnProfileImageOfTweetUser(_ uid : String, completion : @escaping (TweetUser) -> Void)
+   func returnProfileImageOfTweetUser(_ uid : String, completion : @escaping (BaseUserModel) -> Void)
 }

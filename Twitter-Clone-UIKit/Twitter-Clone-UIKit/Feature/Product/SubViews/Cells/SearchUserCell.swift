@@ -30,7 +30,6 @@ class SearchUserCell: UIView {
    // MARK:  selectors
 
    @objc func handleProfileTap() {
-      print("123")
    }
 
 

@@ -13,7 +13,7 @@ protocol TweetCellDelegate {
    func handleRetweetButton()
    func handleLikeButton()
    func handleShareButton()
-   func handleProfileImageTap(user: TweetUser)
+   func handleProfileImageTap(user: BaseUserModel)
 }
 
 
@@ -22,7 +22,7 @@ class TweetCell: UICollectionViewCell {
 
    var delegate: TweetCellDelegate?
 
-   var user:TweetUser?
+   var user:BaseUserModel?
 
    lazy var profileImageView: UIImageView = {
       let iv = UIImageView()

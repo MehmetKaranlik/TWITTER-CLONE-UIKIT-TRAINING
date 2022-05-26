@@ -6,17 +6,47 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 struct BaseUserModel: Codable {
    let profileImagePath,uid: String?
    let fullname, email, username, password: String?
+   var followers : [String]? = []
+   var followings : [String]? = []
 
-   init(dictionary: [String: String?]) {
-         self.profileImagePath = dictionary["profileImagePath"] ?? ""
-         self.fullname = dictionary["fullname"] ?? ""
-         self.email = dictionary["email"] ?? ""
-         self.username = dictionary["username"] ?? ""
-         self.password = dictionary["password"] ?? ""
-         self.uid = dictionary["uid"] ?? ""
+   init(dictionary: [String: Any?]) {
+         self.profileImagePath = dictionary["profileImagePath"] as! String?
+         self.fullname = dictionary["fullname"] as! String?
+         self.email = dictionary["email"] as! String?
+         self.username = dictionary["username"] as! String?
+         self.password = dictionary["password"] as! String?
+         self.uid = dictionary["uid"] as! String?
+         self.followers = populateFollowers(dictionary: dictionary)
+         self.followings = populateFollowings(dictionary: dictionary)
+   }
+
+
+   func populateFollowers(dictionary : [String : Any?]) -> [String] {
+      var temp = [String]()
+
+      guard let followers = dictionary["followers"] as? [String:Any] else { print("patladı"); return []}
+      followers.forEach { key, value in
+         temp.append(key)
+      }
+      return temp
+   }
+
+   func populateFollowings(dictionary : [String : Any?]) -> [String] {
+      var temp = [String]()
+      if let followings = dictionary["followings"] as? [String:Any] {
+         followings.forEach { key,value in
+            temp.append(key)
+         }
+      }
+      return temp
+   }
+
+   var isCurrentUser : Bool {
+      return Auth.auth().currentUser?.uid == self.uid
    }
 }

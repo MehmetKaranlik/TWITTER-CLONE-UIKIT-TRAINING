@@ -86,7 +86,7 @@ class RegisterView: UIView {
                   titleFont: UIFont.systemFont(ofSize: 16, weight: .bold),
                   titleColor: UIColor.twitterBlue,backgroundColor: UIColor.white,
                   cornerRadius: 10)
-
+      button.addTarget(self, action: #selector(handleRegisterButton), for: .touchUpInside)
       return button
    }()
 
