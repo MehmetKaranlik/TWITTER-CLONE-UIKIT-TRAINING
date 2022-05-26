@@ -54,4 +54,16 @@ class ProfileViewModel {
       }
       )
    }
+
+
+   func followUser(targetUserUID : String )  {
+      guard let currentUserUID = Auth.auth().currentUser?.uid else { return }
+      service.followUser(userUID: currentUserUID, targetUID: targetUserUID) { db, error in
+         if let _  =  error {
+            print("something went wrong with following user \(error)")
+            return
+         }
+         print("targetFollowed")
+      }
+   }
 }

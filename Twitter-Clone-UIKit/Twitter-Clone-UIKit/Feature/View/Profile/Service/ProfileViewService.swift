@@ -7,13 +7,13 @@
 
 import Foundation
 import FirebaseDatabase
-import  FirebaseAuth
+import FirebaseAuth
 
 
 struct ProfileService : ProfileServiceProtocol {
 
 
-   var database: Database = Database.database()
+   var database: Database = FirebaseDatabase.Database.database()
 
    var auth: Auth = Auth.auth()
    
@@ -45,5 +45,22 @@ struct ProfileService : ProfileServiceProtocol {
       }
    }
 
+   func followUser(userUID: String, targetUID: String,
+                   completion: @escaping (Database, Error?) -> ()) {
+
+      USER_FOLLOWING_DB.child(userUID).updateChildValues(["uid":targetUID]) { error , dbRef in
+         if let  _ = error {
+            print(error)
+            return
+         }
+         USER_FOLLOWERS_DB.child(targetUID).updateChildValues(["uid": userUID]) { error, dbRef in
+            if let _ = error {
+               print(error)
+               return
+            }
+         }
+      }
+   }
+   
  
 }

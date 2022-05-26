@@ -14,4 +14,7 @@ protocol ProfileServiceProtocol {
    var auth : Auth { get }
    func fetchTweetsByUID(uid : String, completion : @escaping ([Tweet]) -> Void)
    func returnUserByUID(uid: String,completion : @escaping (TweetUser) -> Void)
+   func followUser(userUID:String, targetUID: String,
+                   completion : @escaping (Database,Error?) -> ())
+
 }

@@ -70,4 +70,14 @@ class Utilities {
 
 
    }
+
+   static func returnTopViewNavigationController() -> UINavigationController? {
+      let keyWindow = returnKeyWindow()
+      let root = keyWindow?.rootViewController
+      var topViewController: UINavigationController? = nil
+      while root?.presentedViewController != nil {
+         topViewController = root?.presentedViewController?.navigationController
+      }
+      return topViewController
+   }
 }

@@ -31,7 +31,7 @@ class ExploreViewModel : ObservableObject {
 
 
    func handleCellTap(user: TweetUser) {
-      let vc = ProfileViewController(collectionViewLayout: UICollectionViewFlowLayout())
+      let vc = ProfileViewController()
       vc.viewModel.user = user
       let window = Utilities.returnKeyWindow()
       let root = window?.rootViewController as! BaseController

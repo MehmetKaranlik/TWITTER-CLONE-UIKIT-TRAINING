@@ -51,6 +51,7 @@ class ProfileViewHeader: UICollectionReusableView {
       button.setDimesions(width: 100, height: 35)
       button.layer.borderColor = UIColor.twitterBlue.cgColor
       button.layer.borderWidth = 1.5
+      button.addTarget(self, action: #selector(onFollowButtonTapped(_:)), for: .touchUpInside)
       return button
    }()
 
@@ -97,6 +98,10 @@ class ProfileViewHeader: UICollectionReusableView {
 
    @objc func onBackButtonTapped(_: UIImageView) {
       delegate?.handleBackButtonTap()
+   }
+
+   @objc func onFollowButtonTapped(_ : UIButton) {
+      delegate?.handleFollowButtonTap()
    }
 
    // MARK: init

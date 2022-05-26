@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46018BE4283FA6B0006623F5 /* UIApplicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46018BE3283FA6B0006623F5 /* UIApplicationExtensions.swift */; };
 		4608B2D3282944D900AA37F6 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4608B2D2282944D900AA37F6 /* FeedView.swift */; };
 		4608B2D62829495B00AA37F6 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4608B2D52829495B00AA37F6 /* SDWebImage */; };
 		4608B2DE2829721F00AA37F6 /* TweetingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4608B2DD2829721F00AA37F6 /* TweetingController.swift */; };
@@ -74,6 +75,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		46018BE3283FA6B0006623F5 /* UIApplicationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtensions.swift; sourceTree = "<group>"; };
 		4608B2D2282944D900AA37F6 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		4608B2DD2829721F00AA37F6 /* TweetingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetingController.swift; sourceTree = "<group>"; };
 		4608B2DF2829C25900AA37F6 /* TweetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetingView.swift; sourceTree = "<group>"; };
@@ -667,6 +669,7 @@
 				46500B90282335A80000AC60 /* UIViewExtensions.swift */,
 				469ABA83282462C900357D00 /* UIColorExtensions.swift */,
 				4697311A283E374000409DE0 /* UITextFieldExtensions.swift */,
+				46018BE3283FA6B0006623F5 /* UIApplicationExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -866,6 +869,7 @@
 			files = (
 				46839FE0283505F70087407D /* FeedViewModel.swift in Sources */,
 				46A7430A282D390D00053BC9 /* CaptionTextView.swift in Sources */,
+				46018BE4283FA6B0006623F5 /* UIApplicationExtensions.swift in Sources */,
 				4608B2DE2829721F00AA37F6 /* TweetingController.swift in Sources */,
 				46839FD42834F8770087407D /* TweetingServiceProtocol.swift in Sources */,
 				4608B2D3282944D900AA37F6 /* FeedView.swift in Sources */,
