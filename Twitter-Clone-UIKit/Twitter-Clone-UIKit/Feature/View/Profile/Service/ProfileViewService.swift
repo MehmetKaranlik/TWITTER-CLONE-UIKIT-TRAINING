@@ -13,6 +13,8 @@ import FirebaseAuth
 struct ProfileService : ProfileServiceProtocol {
 
 
+
+
    var database: Database = FirebaseDatabase.Database.database()
 
    var auth: Auth = Auth.auth()
@@ -62,5 +64,18 @@ struct ProfileService : ProfileServiceProtocol {
       }
    }
    
- 
+   func checkIsUserFollowed(targetUID: String,completion: @escaping (Bool) -> ()) {
+      guard let currentUserUID = Auth.auth().currentUser?.uid else { return }
+      USER_FOLLOWING_DB.child(currentUserUID).getData { error, snapshot in
+         if let _ = error {
+            return
+         }
+         guard let dictionary = snapshot?.value as? [String : String] else { return }
+         if dictionary.values.contains(targetUID) {
+            return completion(true)
+         }else {
+            completion (false)
+         }
+      }
+   }
 }

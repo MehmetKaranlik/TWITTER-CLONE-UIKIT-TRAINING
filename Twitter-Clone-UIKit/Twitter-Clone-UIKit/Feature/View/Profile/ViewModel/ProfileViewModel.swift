@@ -32,8 +32,11 @@ class ProfileViewModel {
       headerView.profileImageView.sd_setImage(with: url)
       headerView.userTag.text = "@\(user.username ?? "")"
       headerView.userName.text = user.fullname
-      headerView.editProfileButton
-         .setTitle(user.isCurrentUser() ? "Edit Profile" : "Follow", for: .normal)
+      service.checkIsUserFollowed(targetUID: user.uid ?? "") { value in
+         headerView.editProfileButton
+            .setTitle(user.isCurrentUser() ? "Edit Profile" :
+                        value ?  "Unfollow"  : " Follow", for: .normal)
+      }
    }
 
    func configureCellUponData(cell: TweetCell, tweet: Tweet) {
