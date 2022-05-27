@@ -8,6 +8,9 @@
 import FirebaseAuth
 import Foundation
 import UIKit
+
+
+
 class ProfileViewModel {
    let service = ProfileService()
    var tweets: [Tweet]? {
@@ -33,8 +36,8 @@ class ProfileViewModel {
       headerView.profileImageView.sd_setImage(with: url)
       headerView.userTag.text = "@\(user.username ?? "")"
       headerView.userName.text = user.fullname
-      service.checkIsUserFollowed(targetUID: user.uid ?? "") { value in
-         print(value)
+      checkIsUserFollowed(targetUID: user.uid ?? "") { value in
+         print("Debug :"  + value.description)
          headerView.editProfileButton
             .setTitle(user.isCurrentUser ? "Edit Profile" :
                         value ?  "Unfollow"  : " Follow", for: .normal)
@@ -60,8 +63,14 @@ class ProfileViewModel {
       )
    }
 
+   func checkIsUserFollowed(targetUID: String,completion: @escaping (Bool) -> ()) {
+      let keyWindow = Utilities.returnKeyWindow()
+      guard let root = keyWindow?.rootViewController as? BaseController else { return}
+      let condition = root.viewModel.currentUser?.followings?.contains(targetUID)
+      return completion(condition!)
+   }
 
-   func followUser(targetUserUID : String )  {
+   func followUser(targetUserUID : String)  {
       guard let uid = Auth.auth().currentUser?.uid else { return }
 
       let keyWindow = Utilities.returnKeyWindow()
@@ -72,9 +81,12 @@ class ProfileViewModel {
 
       if !condition {
          service.followUser(userUID: uid,
-                            targetUID: targetUserUID) { db, error in if let _  =  error { return }
-         }
+                            targetUID: targetUserUID) { db, error in if let _  =  error { return }}
       } else {
+
+         service.unfollowUser(userUID: uid, targetUID: targetUserUID)
       }
    }
+
+
 }

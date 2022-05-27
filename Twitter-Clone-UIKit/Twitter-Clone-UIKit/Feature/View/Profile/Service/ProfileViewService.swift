@@ -15,6 +15,8 @@ struct ProfileService : ProfileServiceProtocol {
 
 
 
+
+
    var database: Database = FirebaseDatabase.Database.database()
 
    var auth: Auth = Auth.auth()
@@ -62,11 +64,17 @@ struct ProfileService : ProfileServiceProtocol {
             }
          }
    }
-   
-   func checkIsUserFollowed(targetUID: String,completion: @escaping (Bool) -> ()) {
+
+
+   func unfollowUser(userUID: String, targetUID: String) {
       let keyWindow = Utilities.returnKeyWindow()
-      guard let root = keyWindow?.rootViewController as? BaseController else { return}
-      let condition = root.viewModel.currentUser?.followers?.contains(targetUID) ?? false
-      return completion(condition)
+      guard let root = keyWindow?.rootViewController as? BaseController else { return }
+      root.viewModel.currentUser?.followings?.removeAll(where: { element in
+         element == targetUID
+      })
+      USERS_DB_REF.child(userUID).child("followings").child(targetUID).removeValue { error, dbRef in
+         USERS_DB_REF.child(targetUID).child("followers").child(userUID).removeValue()
+      }
    }
+
 }

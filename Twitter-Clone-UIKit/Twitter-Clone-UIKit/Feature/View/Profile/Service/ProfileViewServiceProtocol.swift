@@ -17,5 +17,6 @@ protocol ProfileServiceProtocol {
    func followUser(userUID:String, targetUID: String,
                    completion : @escaping (Database,Error?) -> ())
 
-   func checkIsUserFollowed(targetUID: String,completion: @escaping (Bool) -> ())
+   func unfollowUser(userUID: String, targetUID: String)
+
 }

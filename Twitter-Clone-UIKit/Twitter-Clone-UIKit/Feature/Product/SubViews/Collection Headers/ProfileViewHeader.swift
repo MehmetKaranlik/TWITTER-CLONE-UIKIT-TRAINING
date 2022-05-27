@@ -7,6 +7,11 @@
 
 import UIKit
 
+
+private enum FollowButtonState : String, CaseIterable {
+   case Follow,Unfollow
+}
+
 class ProfileViewHeader: UICollectionReusableView {
    // MARK: properties
 
@@ -101,7 +106,20 @@ class ProfileViewHeader: UICollectionReusableView {
    }
 
    @objc func onFollowButtonTapped(_ : UIButton) {
+      changeButtonTitle(button: editProfileButton)
       delegate?.handleFollowButtonTap()
+   }
+
+   func changeButtonTitle( button : UIButton)  {
+
+      switch button.currentTitle?.lowercased() {
+         case FollowButtonState.Follow.rawValue.lowercased():
+             button.setTitle(FollowButtonState.Unfollow.rawValue, for: .normal)
+         case FollowButtonState.Unfollow.rawValue.lowercased():
+            button.setTitle(FollowButtonState.Follow.rawValue, for: .normal)
+         default:
+             FollowButtonState.Unfollow.rawValue
+      }
    }
 
    // MARK: init

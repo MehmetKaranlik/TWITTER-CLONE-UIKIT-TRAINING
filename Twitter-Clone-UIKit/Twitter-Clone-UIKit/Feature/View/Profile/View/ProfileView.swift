@@ -118,6 +118,7 @@ extension ProfileView : ProfileCollectionHeaderDelegate {
       guard let uid = Auth.auth().currentUser?.uid else { return }
 
       if (viewModel?.user?.uid != nil && viewModel?.user?.uid != uid) {
+
          viewModel?.followUser(targetUserUID: viewModel?.user?.uid ?? "")
       }
    }

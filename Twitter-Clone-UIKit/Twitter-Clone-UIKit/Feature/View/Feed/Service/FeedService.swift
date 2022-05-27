@@ -24,7 +24,7 @@ struct FeedService: FeedServiceProtocol {
    func returnProfileImageOfTweetUser(_ uid: String, completion : @escaping (BaseUserModel) -> Void) {
 
       USERS_DB_REF.child(uid).getData { error, snapshot in
-         if let error = error {
+         if let _ = error {
             return
          }
          guard let dictionary = snapshot?.value as? [String:Any] else { return}

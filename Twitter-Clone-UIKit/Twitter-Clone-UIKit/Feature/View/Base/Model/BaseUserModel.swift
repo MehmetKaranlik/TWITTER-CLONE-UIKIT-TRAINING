@@ -40,6 +40,7 @@ struct BaseUserModel: Codable {
       var temp = [String]()
       if let followings = dictionary["followings"] as? [String:Any] {
          followings.forEach { key,value in
+            print(key)
             temp.append(key)
          }
       }
