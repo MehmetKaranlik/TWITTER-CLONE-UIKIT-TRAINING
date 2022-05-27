@@ -20,9 +20,9 @@ struct ExploreService: ExploreServiceProtocol {
          if let _ = error {
             return
          }
-         guard let snap = snapshot?.value as? [String: [String: String]] else { return }
+         guard let snap = snapshot?.value as? [String: [String: Any]] else { return }
          snap.forEach { key, value in
-            guard let fullname = value["fullname"] else { return }
+            guard let fullname = value["fullname"] as? String else { return }
           
             if fullname.lowercased().contains(input.lowercased()) {
                searchedUsers.append(BaseUserModel(dictionary: value))
