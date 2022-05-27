@@ -60,6 +60,4 @@ class ExploreViewModel : ObservableObject {
 
    }
 
-
-
 }
