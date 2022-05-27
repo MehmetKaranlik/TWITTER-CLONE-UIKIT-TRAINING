@@ -37,7 +37,6 @@ class ProfileViewModel {
       headerView.userTag.text = "@\(user.username ?? "")"
       headerView.userName.text = user.fullname
       checkIsUserFollowed(targetUID: user.uid ?? "") { value in
-         print("Debug :"  + value.description)
          headerView.editProfileButton
             .setTitle(user.isCurrentUser ? "Edit Profile" :
                         value ?  "Unfollow"  : " Follow", for: .normal)
@@ -83,7 +82,6 @@ class ProfileViewModel {
          service.followUser(userUID: uid,
                             targetUID: targetUserUID) { db, error in if let _  =  error { return }}
       } else {
-
          service.unfollowUser(userUID: uid, targetUID: targetUserUID)
       }
    }

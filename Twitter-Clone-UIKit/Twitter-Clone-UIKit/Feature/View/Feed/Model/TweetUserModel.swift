@@ -28,9 +28,8 @@ struct TweetUser : Codable {
    func populateFolloweds(dictionary : [String : Any?]) -> [String] {
       var temp = [String]()
 
-      guard let followeds = dictionary["followeds"] as? [String:Any] else { print("patladı"); return []}
+      guard let followeds = dictionary["followeds"] as? [String:Any] else {  return []}
       followeds.forEach { key, value in
-         print(key)
          temp.append(key)
       }
       return temp
@@ -38,7 +37,7 @@ struct TweetUser : Codable {
 
    func populateFollowingsw(dictionary : [String : Any?]) -> [String] {
       var temp = [String]()
-      guard let followings = dictionary["followings"] as? [String:Any?] else { print("patlamış olabilir belki mk"); return []}
+      guard let followings = dictionary["followings"] as? [String:Any?] else {  return []}
       followings.forEach { key, value in
          temp.append(key)
       }

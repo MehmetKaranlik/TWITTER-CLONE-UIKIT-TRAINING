@@ -29,7 +29,7 @@ struct BaseUserModel: Codable {
    func populateFollowers(dictionary : [String : Any?]) -> [String] {
       var temp = [String]()
 
-      guard let followers = dictionary["followers"] as? [String:Any] else { print("patladı"); return []}
+      guard let followers = dictionary["followers"] as? [String:Any] else {  return []}
       followers.forEach { key, value in
          temp.append(key)
       }
@@ -40,7 +40,6 @@ struct BaseUserModel: Codable {
       var temp = [String]()
       if let followings = dictionary["followings"] as? [String:Any] {
          followings.forEach { key,value in
-            print(key)
             temp.append(key)
          }
       }
