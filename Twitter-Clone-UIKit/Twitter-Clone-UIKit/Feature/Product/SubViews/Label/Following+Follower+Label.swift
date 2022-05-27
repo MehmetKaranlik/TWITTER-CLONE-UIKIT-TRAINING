@@ -58,7 +58,7 @@ class Following_Follower_Label: UIView {
 
 
 
-   private func populateAttributedString(_ string1 : String,
+    func populateAttributedString(_ string1 : String,
                                          _ string2 : String) -> NSAttributedString {
       let attributedText = NSMutableAttributedString(
          string: string1 + " ",

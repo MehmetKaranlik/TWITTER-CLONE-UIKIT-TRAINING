@@ -87,8 +87,8 @@ class ProfileViewHeader: UICollectionReusableView {
       return text
    }()
 
-   lazy var following_followers_label = Following_Follower_Label(followerCount: 1,
-                                                                 followedCount: 2)
+   lazy var following_followers_label = Following_Follower_Label(followerCount: 0,
+                                                                 followedCount: 0)
 
    lazy var filterButtonRow = ProfileFilterRow()
 
@@ -111,14 +111,29 @@ class ProfileViewHeader: UICollectionReusableView {
    }
 
    func changeButtonTitle( button : UIButton)  {
+      let label = following_followers_label
 
       switch button.currentTitle?.lowercased() {
          case FollowButtonState.Follow.rawValue.lowercased():
+
              button.setTitle(FollowButtonState.Unfollow.rawValue, for: .normal)
+
+            label.followerCount += 1
+            label.followerText.attributedText = label.populateAttributedString("\(label.followerCount)" , "followers")
+
          case FollowButtonState.Unfollow.rawValue.lowercased():
+
             button.setTitle(FollowButtonState.Follow.rawValue, for: .normal)
+
+            label.followerCount -= 1
+
+            label.followerText.attributedText = label.populateAttributedString("\(label.followerCount)" , "followers")
+
          default:
-             FollowButtonState.Unfollow.rawValue
+
+         button.setTitle(FollowButtonState.Unfollow.rawValue, for: .normal)
+            label.followerCount += 1
+            label.followerText.attributedText = label.populateAttributedString("\(label.followerCount)" , "followers")
       }
    }
 

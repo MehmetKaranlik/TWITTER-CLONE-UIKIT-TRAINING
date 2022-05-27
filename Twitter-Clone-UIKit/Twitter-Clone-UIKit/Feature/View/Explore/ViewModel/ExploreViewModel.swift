@@ -46,6 +46,7 @@ class ExploreViewModel : ObservableObject {
    }
 
    private   func getSearchedUsersByInput(input: String) {
+      searchedUsers?.removeAll()
       service.fetchUserByInput(input: input) { [weak self] users in
          self?.searchedUsers = users
       }
@@ -58,7 +59,5 @@ class ExploreViewModel : ObservableObject {
       root.explore.exploreView.tableView.reloadData()
 
    }
-
-
 
 }

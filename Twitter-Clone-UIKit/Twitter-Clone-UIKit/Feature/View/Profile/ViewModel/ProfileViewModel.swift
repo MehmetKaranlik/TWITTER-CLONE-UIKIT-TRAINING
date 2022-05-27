@@ -9,8 +9,6 @@ import FirebaseAuth
 import Foundation
 import UIKit
 
-
-
 class ProfileViewModel {
    let service = ProfileService()
    var tweets: [Tweet]? {
@@ -24,7 +22,6 @@ class ProfileViewModel {
          service.fetchTweetsByUID(uid: user?.uid ?? "") { [weak self] tweets in
             self?.tweets = tweets
             self?.sortTweets()
-
          }
       }
    }
@@ -36,10 +33,11 @@ class ProfileViewModel {
       headerView.profileImageView.sd_setImage(with: url)
       headerView.userTag.text = "@\(user.username ?? "")"
       headerView.userName.text = user.fullname
+      setFollowerFollowings(headerView, user)
       checkIsUserFollowed(targetUID: user.uid ?? "") { value in
          headerView.editProfileButton
             .setTitle(user.isCurrentUser ? "Edit Profile" :
-                        value ?  "Unfollow"  : " Follow", for: .normal)
+               value ? "Unfollow" : " Follow", for: .normal)
       }
    }
 
@@ -62,14 +60,14 @@ class ProfileViewModel {
       )
    }
 
-   func checkIsUserFollowed(targetUID: String,completion: @escaping (Bool) -> ()) {
+   func checkIsUserFollowed(targetUID: String, completion: @escaping (Bool) -> ()) {
       let keyWindow = Utilities.returnKeyWindow()
-      guard let root = keyWindow?.rootViewController as? BaseController else { return}
+      guard let root = keyWindow?.rootViewController as? BaseController else { return }
       let condition = root.viewModel.currentUser?.followings?.contains(targetUID)
       return completion(condition!)
    }
 
-   func followUser(targetUserUID : String)  {
+   func followUser(targetUserUID: String) {
       guard let uid = Auth.auth().currentUser?.uid else { return }
 
       let keyWindow = Utilities.returnKeyWindow()
@@ -80,11 +78,19 @@ class ProfileViewModel {
 
       if !condition {
          service.followUser(userUID: uid,
-                            targetUID: targetUserUID) { db, error in if let _  =  error { return }}
+                            targetUID: targetUserUID) { _, error in if let _ = error { return }}
       } else {
          service.unfollowUser(userUID: uid, targetUID: targetUserUID)
       }
    }
 
-
+   fileprivate func setFollowerFollowings(_ headerView: ProfileViewHeader, _ user: BaseUserModel) {
+      let label = headerView.following_followers_label
+      label.folllowingText.attributedText = label
+         .populateAttributedString(user.followings?.count.description ?? "33", "following")
+      label.followerCount = user.followers?.count ?? 0
+      label.followerText.attributedText = label
+         .populateAttributedString(user.followers?.count.description ?? "33", "followers")
+      label.followedCount = user.followings?.count ?? 0
+   }
 }
