@@ -49,7 +49,7 @@ struct ProfileService : ProfileServiceProtocol {
    }
 
    func followUser(userUID: String, targetUID: String,
-                   completion: @escaping (Database, Error?) -> ()) {
+                   completion: @escaping (Error?, DatabaseReference) -> ()) {
       let keyWindow = Utilities.returnKeyWindow()
       guard let root = keyWindow?.rootViewController as? BaseController else { return }
       root.viewModel.currentUser?.followings?.append(targetUID)
@@ -62,6 +62,7 @@ struct ProfileService : ProfileServiceProtocol {
                USERS_DB_REF .child(targetUID).child("followers")
                   .child(userUID).updateChildValues(["status":true])
             }
+            completion(error,dbRef)
          }
    }
 

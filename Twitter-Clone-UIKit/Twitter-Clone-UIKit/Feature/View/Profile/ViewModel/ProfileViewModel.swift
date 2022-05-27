@@ -78,7 +78,7 @@ class ProfileViewModel {
 
       if !condition {
          service.followUser(userUID: uid,
-                            targetUID: targetUserUID) { _, error in if let _ = error { return }}
+                            targetUID: targetUserUID) { error, _ in if let _ = error { return }}
       } else {
          service.unfollowUser(userUID: uid, targetUID: targetUserUID)
       }
