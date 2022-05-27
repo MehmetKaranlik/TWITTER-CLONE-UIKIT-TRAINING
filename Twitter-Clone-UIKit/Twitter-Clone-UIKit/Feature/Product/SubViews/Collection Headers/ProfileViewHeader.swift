@@ -17,6 +17,8 @@ class ProfileViewHeader: UICollectionReusableView {
 
    weak var delegate: ProfileCollectionHeaderDelegate?
 
+   weak var viewModel : ProfileViewModel?
+
    let blueBackground: UIView = {
       let view = UIView()
       view.heightAnchor.constraint(equalToConstant: 115).isActive = true
@@ -106,7 +108,10 @@ class ProfileViewHeader: UICollectionReusableView {
    }
 
    @objc func onFollowButtonTapped(_ : UIButton) {
-      changeButtonTitle(button: editProfileButton)
+      let isCurrentUser = viewModel!.user!.isCurrentUser
+      if !isCurrentUser {
+         changeButtonTitle(button: editProfileButton)
+      }
       delegate?.handleFollowButtonTap()
    }
 

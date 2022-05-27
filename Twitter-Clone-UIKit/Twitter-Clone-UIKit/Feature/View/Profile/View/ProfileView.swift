@@ -72,6 +72,7 @@ extension ProfileView : UICollectionViewDelegate, UICollectionViewDataSource {
                                        withReuseIdentifier: headerID,
                                        for: indexPath) as! ProfileViewHeader
   header.delegate = self
+  header.viewModel = viewModel
   viewModel!.configureUserUponData(headerView: header, user: viewModel!.user!)
 
   return header
@@ -118,7 +119,7 @@ extension ProfileView : ProfileCollectionHeaderDelegate {
       guard let uid = Auth.auth().currentUser?.uid else { return }
 
       if (viewModel?.user?.uid != nil && viewModel?.user?.uid != uid) {
-
+         
          viewModel?.followUser(targetUserUID: viewModel?.user?.uid ?? "")
       }
    }

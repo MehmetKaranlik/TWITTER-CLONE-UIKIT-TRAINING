@@ -93,4 +93,6 @@ class ProfileViewModel {
          .populateAttributedString(user.followers?.count.description ?? "33", "followers")
       label.followedCount = user.followings?.count ?? 0
    }
+
+   
 }
