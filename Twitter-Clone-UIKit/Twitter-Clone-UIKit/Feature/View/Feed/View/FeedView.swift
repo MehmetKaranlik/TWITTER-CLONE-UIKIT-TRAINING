@@ -98,6 +98,14 @@ extension FeedView : UICollectionViewDelegate, UICollectionViewDataSource {
                                                index: indexPath.row)
       return cell
    }
+
+   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+      guard let cell = collectionView.cellForItem(at: indexPath) as? TweetCell else { return }
+
+      viewModel?
+         .navigateToTweetDisplay(
+            string:cell.headerUserInfoText.text ?? "arada",indexPath: indexPath)
+   }
 }
 
 

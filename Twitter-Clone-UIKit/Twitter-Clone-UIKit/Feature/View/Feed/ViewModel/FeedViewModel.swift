@@ -54,4 +54,24 @@ class FeedViewModel : ObservableObject {
       }
          cell.captionLabel.text = tweet.caption
    }
+
+
+   func navigateToTweetDisplay(string forTitle : String, indexPath : IndexPath) {
+       let keyWindow = Utilities.returnKeyWindow()
+       guard let root = keyWindow?.rootViewController as? BaseController else { return}
+      let vc = TweetDisplayController(tweet: tweets[indexPath.row])
+
+      vc.tweetOwner = extractCoreTitle(forTitle)
+       root.feed.navigationController?.pushViewController(vc, animated: true)
+   }
+
+   private func extractCoreTitle( _ title : String) -> String  {
+      let indexOf = title.firstIndex { character in
+         character == "@"
+      }
+      let coreTitle = title.prefix(upTo: indexOf!)
+
+      return String(coreTitle)
+
+   }
 }
