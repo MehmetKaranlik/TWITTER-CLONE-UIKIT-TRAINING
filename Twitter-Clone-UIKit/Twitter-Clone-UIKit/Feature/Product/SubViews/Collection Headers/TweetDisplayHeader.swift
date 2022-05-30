@@ -9,6 +9,13 @@ import UIKit
 
 class TweetDisplayHeader: UICollectionReusableView {
    // MARK: properties
+   typealias function = () -> ()?
+
+    var shareFunction : function? = nil
+    var tweetFuntion : function?  = nil
+    var likeFunction : function?  = nil
+    var retweetFunction : function? = nil
+
 
    let profileImageView: UIImageView = {
       let circleDimension = 60.0
@@ -37,12 +44,12 @@ class TweetDisplayHeader: UICollectionReusableView {
       return label
    }()
 
-   let captionView: UITextView = {
-      let cv = UITextView()
+   let captionView: UILabel = {
+      let cv = UILabel()
       cv.text = """
       This test text about seeing if its gonna break down this lines, hopefully yes ! 😜
       """
-      cv.textContainer.maximumNumberOfLines = 0
+      cv.numberOfLines = 0
       cv.textColor = .black
       cv.font = .systemFont(ofSize: 17, weight: .regular)
       return cv
@@ -66,24 +73,64 @@ class TweetDisplayHeader: UICollectionReusableView {
    }
 
    required init?(coder: NSCoder) {
-      super.init(coder: coder)
+      fatalError("init(coder:) has not been implemented")
    }
 
+   let tweetButton : UIButton = {
+      let button = CustomButton.iconButton(iconName: "comment", tintColor: UIColor.darkGray)
+      button.setDimesions(width: 24, height: 24)
+      button.addTarget(self, action: #selector(handleTweetButton(_:)), for: .touchUpInside)
+      return button
+   }()
+   let retweetButton : UIButton = {
+      let button = CustomButton.iconButton(iconName: "retweet", tintColor: UIColor.darkGray)
+      button.setDimesions(width: 24, height: 24)
+      button.addTarget(self, action: #selector(handleRetweetButton(_:)), for: .touchUpInside)
+
+      return button
+   }()
+   let likeButton : UIButton = {
+      let button = CustomButton.iconButton(iconName: "like", tintColor: UIColor.darkGray)
+      button.setDimesions(width: 24, height: 24)
+      button.addTarget(self, action: #selector(handleLikeButton(_:)), for: .touchUpInside)
+
+      return button
+   }()
+   let shareButton : UIButton = {
+      let button = CustomButton.iconButton(iconName: "share", tintColor: UIColor.darkGray)
+      button.setDimesions(width: 24, height: 24)
+      button.addTarget(self, action: #selector(handleShareButton(_:)), for: .touchUpInside)
+
+      return button
+   }()
+
+
+   lazy var buttonContainer : UIStackView = {
+      let sv = UIStackView(arrangedSubviews: [tweetButton,retweetButton,likeButton,shareButton])
+      sv.distribution = .equalSpacing
+      sv.axis = .horizontal
+      return sv
+   }()
+
+
+
    override var intrinsicContentSize: CGSize {
-      return CGSize(width: frame.width, height: 300)
+      return CGSize(width: frame.width, height: 1000)
    }
 
    // MARK: helpers
+
+
+
 
    private func configureUI() {
       profileImageConfiguration()
       fullnameTextConfiguration()
       userNameConfiguration()
       captionTextConfiguration()
+      buttonContainerConfiguration()
       tweetMetaDataLabelConfiguration()
-      addSubview(date)
-      date.anchor(bottom: tweetMetaDataLabel.topAnchor, left: leftAnchor,
-                  paddingBottom: 4, paddingLeft: 16)
+      dateConfiguration()
    }
 
    fileprivate func profileImageConfiguration() {
@@ -107,14 +154,46 @@ class TweetDisplayHeader: UICollectionReusableView {
    fileprivate func captionTextConfiguration() {
       addSubview(captionView)
       captionView.anchor(top: profileImageView.bottomAnchor,
-                         bottom: bottomAnchor,
+
                          right: rightAnchor,
-                         left: leftAnchor, paddingTop: 8, paddingRight: 8, paddingLeft: 8)
+                         left: leftAnchor, paddingTop: 8, paddingRight: 16, paddingLeft: 16)
    }
 
    fileprivate func tweetMetaDataLabelConfiguration() {
       addSubview(tweetMetaDataLabel)
-      tweetMetaDataLabel.anchor(bottom: bottomAnchor, left: leftAnchor,
+      tweetMetaDataLabel.anchor(bottom: buttonContainer.topAnchor, left: leftAnchor,
                                 paddingBottom: 4, paddingLeft: 16)
+   }
+
+   fileprivate func buttonContainerConfiguration() {
+      addSubview(buttonContainer)
+      buttonContainer.anchor( bottom: self.bottomAnchor, right: rightAnchor,
+                              left: leftAnchor,paddingBottom: 4, paddingRight:  24 ,paddingLeft: 24)
+      buttonContainer.heightAnchor.constraint(equalToConstant: 24).isActive = true
+   }
+
+   fileprivate func dateConfiguration() {
+      addSubview(date)
+      date.anchor( bottom: tweetMetaDataLabel.topAnchor,
+                   left: tweetMetaDataLabel.leftAnchor,paddingBottom: 4)
+   }
+
+
+
+}
+
+// MARK:  selectors
+extension TweetDisplayHeader {
+   @objc func handleTweetButton(_ : UIButton) {
+      tweetFuntion  == nil ? nil : tweetFuntion!()
+   }
+   @objc func handleRetweetButton(_ : UIButton) {
+      retweetFunction  == nil ? nil : retweetFunction!()
+   }
+   @objc func handleLikeButton(_ : UIButton) {
+      likeFunction  == nil ? nil : likeFunction!()
+   }
+   @objc func handleShareButton(_ : UIButton) {
+      shareFunction  == nil ? nil : shareFunction!()
    }
 }

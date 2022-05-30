@@ -19,6 +19,7 @@ class TweetDisplayView: UIView  {
       let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
       collectionView.delegate = self
       collectionView.dataSource = self
+
       return collectionView
    }()
 
@@ -50,7 +51,6 @@ class TweetDisplayView: UIView  {
                             right: rightAnchor, left: leftAnchor)
       collectionView.register(TweetDisplayHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerID)
       collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
-      print("ananın")
    }
 }
 
@@ -91,7 +91,7 @@ extension TweetDisplayView: UICollectionViewDelegateFlowLayout {
                        layout collectionViewLayout: UICollectionViewLayout,
                        sizeForItemAt indexPath: IndexPath) -> CGSize
    {
-  return CGSize(width: frame.width, height: 150)
+  return CGSize(width: frame.width, height: 100)
    }
 
    func collectionView(_ collectionView: UICollectionView,
