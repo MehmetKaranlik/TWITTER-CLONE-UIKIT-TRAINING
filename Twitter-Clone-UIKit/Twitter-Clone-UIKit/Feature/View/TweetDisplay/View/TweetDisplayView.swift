@@ -50,7 +50,7 @@ class TweetDisplayView: UIView  {
       collectionView.anchor(top: topAnchor, bottom: bottomAnchor,
                             right: rightAnchor, left: leftAnchor)
       collectionView.register(TweetDisplayHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerID)
-      collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
+      collectionView.register(TweetDisplayCell.self, forCellWithReuseIdentifier: cellID)
    }
 }
 
@@ -73,8 +73,7 @@ extension TweetDisplayView : UICollectionViewDelegate, UICollectionViewDataSourc
                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
    {
   let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID,
-                                                for: indexPath) as! UICollectionViewCell
-  cell.backgroundColor = .red
+                                                for: indexPath) as! TweetDisplayCell
   return cell
    }
 
@@ -91,13 +90,22 @@ extension TweetDisplayView: UICollectionViewDelegateFlowLayout {
                        layout collectionViewLayout: UICollectionViewLayout,
                        sizeForItemAt indexPath: IndexPath) -> CGSize
    {
-  return CGSize(width: frame.width, height: 100)
+
+  let cell = collectionView.cellForItem(at: indexPath)
+  cell?.setNeedsLayout()
+  cell?.layoutIfNeeded()
+  let width = collectionView.frame.width
+  let height :CGFloat = 0
+
+  let targetSize : CGSize = CGSize(width: width, height: height)
+  let size = cell?.contentView.systemLayoutSizeFitting(targetSize,withHorizontalFittingPriority: .defaultHigh,verticalFittingPriority: .fittingSizeLevel)
+  return size ?? CGSize(width: frame.width, height: 150)
    }
 
    func collectionView(_ collectionView: UICollectionView,
                        layout collectionViewLayout: UICollectionViewLayout,
                        referenceSizeForHeaderInSection section: Int) -> CGSize
    {
-  return CGSize(width: frame.width, height: 200)
+  return CGSize(width: frame.width, height: 230)
    }
 }

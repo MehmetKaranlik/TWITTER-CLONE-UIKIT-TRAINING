@@ -112,6 +112,13 @@ class TweetDisplayHeader: UICollectionReusableView {
       return sv
    }()
 
+   lazy var dividerView : UIView = {
+      let view = UIView()
+      view.backgroundColor =  .darkGray
+      view.setDimesions(width: frame.width, height: 0.75)
+      return view
+   }()
+
 
 
    override var intrinsicContentSize: CGSize {
@@ -119,6 +126,8 @@ class TweetDisplayHeader: UICollectionReusableView {
    }
 
    // MARK: helpers
+
+
 
 
 
@@ -131,6 +140,7 @@ class TweetDisplayHeader: UICollectionReusableView {
       buttonContainerConfiguration()
       tweetMetaDataLabelConfiguration()
       dateConfiguration()
+      dividerConfiguration()
    }
 
    fileprivate func profileImageConfiguration() {
@@ -176,6 +186,11 @@ class TweetDisplayHeader: UICollectionReusableView {
       addSubview(date)
       date.anchor( bottom: tweetMetaDataLabel.topAnchor,
                    left: tweetMetaDataLabel.leftAnchor,paddingBottom: 4)
+   }
+   
+   fileprivate func dividerConfiguration() {
+      addSubview(dividerView)
+      dividerView.anchor( bottom: bottomAnchor, right: rightAnchor, left: leftAnchor)
    }
 
 
